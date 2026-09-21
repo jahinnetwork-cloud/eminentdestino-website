@@ -98,10 +98,8 @@ def footer(home):
         <h3 data-i18n="ft.contact">Contact</h3>
         <ul>
           <li><a id="mailLink2" href="#"></a></li>
-          <li>Facebook — <span data-i18n="soon">link coming soon</span></li>
-          <li>YouTube — <span data-i18n="soon">link coming soon</span></li>
-          <li>TikTok — <span data-i18n="soon">link coming soon</span></li>
-          <li>Telegram — <span data-i18n="soon">link coming soon</span></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61592448591808" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://t.me/+959674092920" target="_blank" rel="noopener noreferrer">Telegram · +95 9674092920</a></li>
         </ul>
       </div>
     </div>
@@ -129,6 +127,8 @@ def contact(service_page):
         <p class="lead" data-i18n="{sub_key}">{sub}</p>
         <dl class="info">
           <div><dt>Email</dt><dd><a id="mailLink" href="#"></a></dd></div>
+          <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/profile.php?id=61592448591808" target="_blank" rel="noopener noreferrer">Eminent Destino</a></dd></div>
+          <div><dt>Telegram</dt><dd><a href="https://t.me/+959674092920" target="_blank" rel="noopener noreferrer">+95 9674092920</a></dd></div>
           <div><dt data-i18n="ft.eminent.h">Eminent (Jahin Music)</dt><dd data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</dd></div>
           <div><dt>Destino</dt><dd data-i18n="ft.destino">Myanmar</dd></div>
         </dl>
@@ -383,8 +383,56 @@ def home_main():
 '''
 
 # ---------------------------------------------------------------- SERVICE PAGES
+def service_details(s):
+    sid = s["id"]; en = s["en"]
+    def field(key, tag="span", attrs=""):
+        parts = key.split(".")
+        value = en[parts[0]] if len(parts) == 1 else en[parts[0]][int(parts[1])]
+        return f'<{tag} data-s="{sid}|{key}" {attrs}>{esc(value)}</{tag}>'
+    cards = "".join(f'''<article class="service-card" data-reveal style="--d:{k*.08:.2f}s">
+      <span class="service-card__number" aria-hidden="true">0{k+1}</span>
+      {field(f"focus.{k*2}", "h3")}{field(f"focus.{k*2+1}", "p")}</article>''' for k in range(3))
+    checklist = "".join(f'<li>{CHECK}{field(f"prepare.{k}")}</li>' for k in range(len(en["prepare"])))
+    faqs = "".join(f'''<details class="service-faq" data-reveal>
+      <summary>{field(f"faq.{k}")}<span class="service-faq__icon" aria-hidden="true"></span></summary>
+      {field(f"faq.{k+1}", "p")}</details>''' for k in range(0, len(en["faq"]), 2))
+    return f'''
+  <section class="sec" id="service-details">
+    <div class="wrap">
+      <div class="service-heading" data-reveal>
+        <p class="service-eyebrow" data-i18n="detail.eyebrow">The service, explained</p>
+        {field("detailTitle", "h2")}{field("detailIntro", "p", 'class="lead"')}
+      </div>
+      <div class="service-grid">{cards}</div>
+    </div>
+  </section>
+  <section class="sec sec--tint" id="why-edo">
+    <div class="wrap service-reasons">
+      <div data-reveal><p class="service-eyebrow" data-i18n="detail.partner">Your EDO partnership</p>
+        {field("whyTitle", "h2")}{field("why", "p", 'class="lead"')}
+        <a class="btn" href="#contact" data-interest="{sid}"><span data-i18n="detail.talk">Let's talk about your project</span>{ARROW}</a>
+      </div>
+      <aside class="service-prepare" data-reveal style="--d:.12s">
+        <span class="ico" aria-hidden="true">{svg(ICONS[sid])}</span>
+        <h3 data-i18n="detail.prepare">What to prepare</h3>
+        <p data-i18n="detail.prepareNote">A few details help us make the first conversation useful.</p>
+        <ul class="sp-list">{checklist}</ul>
+      </aside>
+    </div>
+  </section>''', f'''
+  <section class="sec" id="questions">
+    <div class="wrap service-questions">
+      <div data-reveal><p class="service-eyebrow" data-i18n="detail.before">Before you start</p>
+        <h2 data-i18n="detail.faq">Good questions. Clear answers.</h2>
+        <p class="lead" data-i18n="detail.faqNote">Explore the details, then talk to us about your own project.</p>
+      </div>
+      <div>{faqs}</div>
+    </div>
+  </section>'''
+
 def service_main(i):
     s = SERVICES[i]; sid = s["id"]; en = s["en"]
+    details, questions = service_details(s)
     prev_s = SERVICES[(i - 1) % len(SERVICES)]; next_s = SERVICES[(i + 1) % len(SERVICES)]
     who = f'<span class="sp-who" data-s="{sid}|who">{esc(en["who"])}</span>' if "who" in en else ""
     bullets = "".join(f'<li>{CHECK}<span data-s="{sid}|b.{k}">{esc(b)}</span></li>' for k, b in enumerate(en["b"]))
@@ -435,6 +483,14 @@ def service_main(i):
     </div>
   </section>
 
+  <nav class="service-jump wrap" aria-label="Service sections" data-i18n-aria="detail.nav">
+    <a href="#service-details" data-i18n="detail.overview">Service overview</a>
+    <a href="#why-edo" data-i18n="detail.why">Why EDO</a>
+    <a href="#how-it-works" data-i18n="sp.how">How it works</a>
+    <a href="#questions" data-i18n="detail.faqShort">FAQs</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+
   <section class="sec sec--tint">
     <div class="wrap sp-body">
       <div data-reveal>
@@ -448,13 +504,15 @@ def service_main(i):
     </div>
   </section>
 
-  <section class="sec">
+{details}
+  <section class="sec" id="how-it-works">
     <div class="wrap">
       <h2 class="steps-h" data-i18n="sp.how">How it works</h2>
       <ol class="steps">{steps}</ol>
     </div>
   </section>
 {extra}
+{questions}
 {contact(True)}
 
   <section class="sec sec--line">

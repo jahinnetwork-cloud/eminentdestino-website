@@ -82,7 +82,19 @@ const MY = {
 "payx.title":"သင့်နည်းလမ်းအတိုင်း ငွေရယူပါ။","payx.note":"လစဉ် အချိန်မှန် ပေးချေပါသည်။ ငွေမပေးချေမီ ငွေလဲနှုန်းကို ကြိုတင်ဖော်ပြပါသည်။",
 "meta.title":"Eminent Destino (EDO) — မြန်မာ့ဖန်တီးသူများ၊ ကမ္ဘာသို့ ရောက်ရှိစေမည်",
 "msg.ok":"သင့်မက်ဆေ့ချ်ပါသော အီးမေးလ်အက်ပ် ပွင့်လာပါမည်။ မပွင့်လျှင် {email} သို့ တိုက်ရိုက်ရေးပို့ပါ။",
-"msg.err":"အမည်နှင့် မှန်ကန်သော အီးမေးလ်ကို ဖြည့်ပေးပါ။"
+"msg.err":"အမည်နှင့် မှန်ကန်သော အီးမေးလ်ကို ဖြည့်ပေးပါ။",
+"detail.eyebrow":"ဝန်ဆောင်မှုအကြောင်း အသေးစိတ်",
+"detail.partner":"သင့် EDO မိတ်ဖက်ဆက်ဆံရေး",
+"detail.talk":"သင့်စီမံကိန်းအကြောင်း ဆွေးနွေးကြပါစို့",
+"detail.prepare":"ပြင်ဆင်ထားရမည့်အရာများ",
+"detail.prepareNote":"အချက်အလက်အနည်းငယ်က ပထမဆွေးနွေးမှုကို ပိုအသုံးဝင်စေပါသည်။",
+"detail.before":"မစတင်မီ သိထားရန်",
+"detail.faq":"သိလိုသောမေးခွန်းများနှင့် ရှင်းလင်းသောအဖြေများ။",
+"detail.faqNote":"အသေးစိတ်ဖတ်ရှုပြီး သင့်စီမံကိန်းအကြောင်း ကျွန်ုပ်တို့နှင့် ဆွေးနွေးပါ။",
+"detail.overview":"ဝန်ဆောင်မှုအကျဉ်းချုပ်",
+"detail.why":"EDO ကို ရွေးချယ်ရသည့်အကြောင်း",
+"detail.faqShort":"မေးလေ့ရှိသောမေးခွန်းများ",
+"detail.nav":"ဝန်ဆောင်မှုကဏ္ဍများ"
 };
 const EN = {
  "meta.title":document.title,
@@ -93,6 +105,7 @@ const EN = {
 let LANG="en";
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
 $$("[data-i18n]").forEach(el=>{ if(!(el.dataset.i18n in EN)) EN[el.dataset.i18n]=el.textContent.trim(); });
+$$("[data-i18n-aria]").forEach(el=>{ EN[el.dataset.i18nAria]=el.getAttribute("aria-label"); });
 const t=k=>(LANG==="my"&&MY[k]!==undefined)?MY[k]:(EN[k]!==undefined?EN[k]:k);
 function sv(id,f){
   const s=SVC[id]; if(!s) return undefined;
@@ -119,6 +132,7 @@ function setLang(l){
   LANG=l;
   document.documentElement.lang=l==="my"?"my":"en";
   $$("[data-i18n]").forEach(el=>{ el.textContent=t(el.dataset.i18n); });
+  $$("[data-i18n-aria]").forEach(el=>{ el.setAttribute("aria-label",t(el.dataset.i18nAria)); });
   $$("[data-s]").forEach(el=>{ const [id,f]=el.dataset.s.split("|"); const v=sv(id,f); if(v!==undefined) el.textContent=v; });
   $$(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
   updateSound(); syncLinks(l);
