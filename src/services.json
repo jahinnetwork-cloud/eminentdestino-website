@@ -5,10 +5,10 @@
     "en": {
       "t": "YouTube MCN / CMS",
       "tag": "Monetize your channel and protect your content from Myanmar.",
-      "p": "Myanmar is not directly available in the YouTube Partner Program. Join EDO's Multi-Channel Network (MCN) and monetize through our managed YouTube CMS, with policy guidance and AdSense support along the way.",
+      "p": "We onboard accepted network channels through our Owned & Operated (O&O) CMS model after reviewing exclusive content rights and day-to-day operations. Myanmar creators receive Burmese-speaking support for channel management, rights and monthly payment, subject to platform review and policy.",
       "for": "Myanmar YouTube creators, music channels, film and entertainment channels, and labels.",
       "b": [
-        "Channel onboarding and monetization through our managed network",
+        "O&O CMS onboarding after rights and channel operations review",
         "AdSense-related support and YouTube policy guidance",
         "Content ID and rights management through YouTube CMS",
         "Monthly payments by bank, crypto, KBZ Pay, Payoneer or PayPal",
@@ -16,8 +16,8 @@
       ],
       "s": [
         "Send us your channel link and a short introduction.",
-        "We review the channel and content, then onboard you into our MCN.",
-        "You earn through the network and get paid monthly by your chosen method."
+        "We review your channel, rights and policy standing, then arrange eligible MCN onboarding subject to platform approval.",
+        "You receive statements and request payment on the agreed monthly settlement schedule."
       ],
       "detailTitle": "A channel is more than its next upload.",
       "detailIntro": "An MCN brings channel operations, monetization support and rights administration into a managed relationship. For music and entertainment creators, that means looking at the channel, the catalog and the people who own the content together. EDO helps you understand the next steps before onboarding, then supports the operational side as your channel develops.",
@@ -43,16 +43,20 @@
         "Can I join if I already work with an MCN?",
         "Tell us about your current agreement first. Any release requirements, notice period and existing claims need to be reviewed before a transfer is planned.",
         "Is Content ID available for every video?",
-        "No. Suitability depends on the material and the rights you control. Non-exclusive content and material owned by other people require particular care. We discuss eligibility during the review."
+        "No. Suitability depends on the material and the rights you control. Non-exclusive content and material owned by other people require particular care. We discuss eligibility during the review.",
+        "What does O&O mean for my channel?",
+        "EDO must obtain documented exclusive rights to the channel’s YouTube content and actively manage daily channel operations. We explain the contract, fee, responsibilities and exit process before linking. An invitation alone does not establish O&O status.",
+        "Does 0% tax mean no tax can ever apply?",
+        "No. EDO does not add its own tax deduction beyond the contracted service share. YouTube withholding or other applicable taxes can still reduce finalized revenue, and a creator’s own obligations depend on their circumstances."
       ]
     },
     "my": {
       "t": "YouTube MCN / CMS",
       "tag": "မြန်မာနိုင်ငံမှ သင့်ချန်နယ်ဖြင့် ဝင်ငွေရယူပြီး အကြောင်းအရာကို ကာကွယ်ပါ။",
-      "p": "မြန်မာနိုင်ငံသည် YouTube Partner Program ကို တိုက်ရိုက်အသုံးပြုနိုင်ခြင်း မရှိပါ။ EDO ၏ Multi-Channel Network (MCN) တွင် ပါဝင်ပြီး ကျွန်ုပ်တို့၏ စီမံခန့်ခွဲထားသော YouTube CMS မှတစ်ဆင့် ဝင်ငွေရယူနိုင်ပါသည်။ မူဝါဒလမ်းညွှန်မှုနှင့် AdSense ဆိုင်ရာ ပံ့ပိုးမှုများလည်း ရရှိပါမည်။",
+      "p": "ကျွန်ုပ်တို့သည် သီးသန့်အကြောင်းအရာအခွင့်အရေးနှင့် နေ့စဉ်လုပ်ငန်းများကို စစ်ဆေးပြီးနောက် လက်ခံထားသော ကွန်ရက်ချန်နယ်များကို Owned & Operated (O&O) CMS မော်ဒယ်ဖြင့် ချိတ်ဆက်ပါသည်။ မြန်မာဖန်တီးသူများအတွက် ချန်နယ်စီမံမှု၊ မူပိုင်ခွင့်နှင့် လစဉ်ငွေပေးချေမှုကို မြန်မာဘာသာဖြင့် ပံ့ပိုးပြီး ပလက်ဖောင်းစစ်ဆေးမှုနှင့် မူဝါဒများ ဆက်လက်သက်ဆိုင်သည်။",
       "for": "မြန်မာ YouTube ဖန်တီးသူများ၊ ဂီတချန်နယ်များ၊ ရုပ်ရှင်နှင့် ဖျော်ဖြေရေးချန်နယ်များနှင့် Label များ။",
       "b": [
-        "စီမံခန့်ခွဲထားသော ကွန်ရက်မှတစ်ဆင့် ချန်နယ်စတင်ခြင်းနှင့် ဝင်ငွေရယူခြင်း",
+        "မူပိုင်ခွင့်နှင့် ချန်နယ်လုပ်ငန်းများ စစ်ဆေးပြီးနောက် O&O CMS သို့ ချိတ်ဆက်ခြင်း",
         "AdSense ဆိုင်ရာ ပံ့ပိုးမှုနှင့် YouTube မူဝါဒ လမ်းညွှန်မှု",
         "YouTube CMS မှတစ်ဆင့် Content ID နှင့် မူပိုင်ခွင့်စီမံခန့်ခွဲမှု",
         "ဘဏ်၊ Crypto၊ KBZ Pay၊ Payoneer သို့မဟုတ် PayPal ဖြင့် လစဉ် ငွေပေးချေမှု",
@@ -60,8 +64,8 @@
       ],
       "s": [
         "သင့်ချန်နယ်လင့်ခ်နှင့် အကျဉ်းချုပ် မိတ်ဆက်ချက်ကို ပို့ပေးပါ။",
-        "ချန်နယ်နှင့် အကြောင်းအရာကို စစ်ဆေးပြီးနောက် ကျွန်ုပ်တို့၏ MCN သို့ ဝင်ရောက်စေပါသည်။",
-        "ကွန်ရက်မှတစ်ဆင့် ဝင်ငွေရရှိပြီး သင်ရွေးချယ်သော နည်းလမ်းဖြင့် လစဉ် ငွေပေးချေခံရပါမည်။"
+        "ချန်နယ်၊ မူပိုင်ခွင့်နှင့် မူဝါဒအခြေအနေကို စစ်ဆေးပြီး ပလက်ဖောင်းအတည်ပြုချက်အပေါ် မူတည်၍ MCN သို့ ချိတ်ဆက်ရန် စီစဉ်ပါသည်။",
+        "သဘောတူထားသော လစဉ်ငွေရှင်းမှုကာလအရ ရှင်းတမ်းရယူပြီး ငွေထုတ်တောင်းဆိုနိုင်ပါသည်။"
       ],
       "detailTitle": "ချန်နယ်တစ်ခုသည် ဗီဒီယိုတင်ခြင်းထက် ပိုပါသည်။",
       "detailIntro": "MCN သည် ချန်နယ်စီမံမှု၊ ဝင်ငွေရရှိရေးပံ့ပိုးမှုနှင့် မူပိုင်ခွင့်စီမံမှုကို ချိတ်ဆက်ပေးသော ကွန်ရက်ဖြစ်သည်။ ဂီတနှင့် ဖျော်ဖြေရေးဖန်တီးသူများအတွက် ချန်နယ်၊ လက်ရာများနှင့် ပိုင်ရှင်အချက်အလက်ကို အတူစစ်ဆေးရန် လိုအပ်ပါသည်။ EDO က စတင်မဝင်ရောက်မီ လုပ်ဆောင်ရမည့်အဆင့်များကို ရှင်းပြပြီး ချန်နယ်တိုးတက်လာစဉ် လုပ်ငန်းပိုင်းဆိုင်ရာ ပံ့ပိုးပေးပါသည်။",
@@ -87,7 +91,11 @@
         "အခြား MCN နှင့် လက်တွဲနေပါက ဝင်နိုင်ပါသလား။",
         "လက်ရှိသဘောတူညီချက်ကို ဦးစွာပြောပြပါ။ ပြောင်းရွှေ့မှုမစီစဉ်မီ ထွက်ခွာခွင့်၊ ကြိုတင်အကြောင်းကြားရမည့်ကာလနှင့် ရှိပြီးသား claim များကို စစ်ဆေးရပါမည်။",
         "ဗီဒီယိုတိုင်းအတွက် Content ID ရပါသလား။",
-        "မရပါ။ အကြောင်းအရာနှင့် သင်ထိန်းချုပ်သောအခွင့်အရေးများပေါ် မူတည်ပါသည်။ သီးသန့်မဟုတ်သောလိုင်စင်နှင့် အခြားသူပိုင်ပစ္စည်းများကို သေချာစစ်ဆေးရန် လိုအပ်ပါသည်။"
+        "မရပါ။ အကြောင်းအရာနှင့် သင်ထိန်းချုပ်သောအခွင့်အရေးများပေါ် မူတည်ပါသည်။ သီးသန့်မဟုတ်သောလိုင်စင်နှင့် အခြားသူပိုင်ပစ္စည်းများကို သေချာစစ်ဆေးရန် လိုအပ်ပါသည်။",
+        "ကျွန်ုပ်၏ချန်နယ်အတွက် O&O ဆိုသည်မှာ အဘယ်နည်း။",
+        "EDO သည် ချန်နယ်၏ YouTube အကြောင်းအရာအပေါ် စာရွက်စာတမ်းဖြင့် သတ်မှတ်ထားသော သီးသန့်အခွင့်အရေးကို ရရှိပြီး နေ့စဉ်ချန်နယ်လုပ်ငန်းများကို တက်ကြွစွာ စီမံရသည်။ ချိတ်ဆက်မီ စာချုပ်၊ ဝန်ဆောင်ခ၊ တာဝန်နှင့် ထွက်ခွာသည့်လုပ်ငန်းစဉ်ကို ရှင်းပြပါသည်။ ဖိတ်ကြားချက်တစ်ခုတည်းဖြင့် O&O အခြေအနေ မဖြစ်လာပါ။",
+        "အခွန် 0% ဆိုသည်မှာ မည်သည့်အခွန်မျှ မရှိနိုင်ဟု ဆိုလိုပါသလား။",
+        "မဟုတ်ပါ။ EDO သည် စာချုပ်ပါ ဝန်ဆောင်ဝေစုအပြင် ကိုယ်ပိုင်အခွန်ဖြတ်တောက်မှု ထပ်မထည့်ပါ။ YouTube withholding သို့မဟုတ် အခြားသက်ဆိုင်ရာအခွန်များကြောင့် အတည်ပြုပြီးသော ဝင်ငွေ လျော့နိုင်ပြီး ဖန်တီးသူ၏ ကိုယ်ပိုင်တာဝန်များသည် ၎င်း၏အခြေအနေအပေါ် မူတည်သည်။"
       ]
     }
   },

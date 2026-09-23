@@ -28,6 +28,7 @@ const HERO_VIDEO_SOURCES = [
    ===================================================================== */
 const SERVICES = /*__SERVICES__*/[];
 const SVC = Object.fromEntries(SERVICES.map(s=>[s.id,s]));
+const MCN_COPY = /*__MCN_COPY__*/{};
 
 /* Burmese for all static page text (English is read straight from the HTML) */
 const MY = {
@@ -36,7 +37,7 @@ const MY = {
 "hero.l1":"မြန်မာ့ဖန်တီးသူများ","hero.l2":"ကမ္ဘာသို့ ရောက်ရှိစေမည်",
 "hero.lead":"YouTube နှင့် Facebook ဝင်ငွေရရှိရေး၊ ဂီတဖြန့်ချိရေး၊ ဂီတထုတ်ဝေခွင့်၊ မူပိုင်ခွင့်ကာကွယ်ရေးနှင့် အခြားဝန်ဆောင်မှုများအပြင် B2B မိတ်ဖက်များအတွက် White Label နှင့် API ဝန်ဆောင်မှုများလည်း ပါရှိသည်။",
 "hero.cta1":"ဝန်ဆောင်မှုများ ကြည့်ရန်","hero.cta2":"MCN တွင် ပါဝင်ရန်",
-"hero.caption":"EDO Originals — အနုပညာရှင်များ၏ Showreel","snd.on":"အသံဖွင့်ရန်","snd.off":"အသံပိတ်ရန်","play.btn":"ဗီဒီယိုဖွင့်ရန် နှိပ်ပါ",
+"play.btn":"ဗီဒီယိုဖွင့်ရန် နှိပ်ပါ",
 "about.title":"ကုမ္ပဏီနှစ်ခု၊ မြန်မာနိုင်ငံအတွက် ပလက်ဖောင်းတစ်ခု။",
 "about.p":"၂၀၂၆ ခုနှစ်တွင် Eminent (Jahin Music) နှင့် Destino တို့ ပူးပေါင်း၍ Eminent Destino ကို ထူထောင်ခဲ့ပါသည်။ ၎င်းသည် မြန်မာ့ဖန်တီးသူများအား ယခုရရှိနိုင်သည့် ရွေးချယ်စရာများထက် ပိုမိုကောင်းမွန်သော ဝန်ဆောင်မှု ပေးရန် ရည်ရွယ်သည့် ပလက်ဖောင်း ဖြစ်ပါသည်။",
 "stat.1":"ဝန်ဆောင်မှု","stat.2":"ငွေထုတ်နည်းလမ်း","stat.3":"ငွေပေးချေမှု ငွေကြေး","stat.4v":"လစဉ်","stat.4":"ငွေပေးချေမှု ကာလ",
@@ -96,6 +97,15 @@ const MY = {
 "detail.faqShort":"မေးလေ့ရှိသောမေးခွန်းများ",
 "detail.nav":"ဝန်ဆောင်မှုကဏ္ဍများ"
 };
+Object.assign(MY, MCN_COPY, {
+  "explore.label":"သင့်အတွက် စတင်ရာနေရာ",
+  "explore.title":"မည်သည့်အကူအညီ လိုအပ်ပါသလဲ။",
+  "explore.aria":"ဝန်ဆောင်မှုရွေးချယ်ရန်",
+  "explore.creator":"ကျွန်ုပ်၏ YouTube ချန်နယ်",
+  "explore.artist":"ကျွန်ုပ်၏ ဂီတထုတ်ဝေမှု",
+  "explore.partner":"ကျွန်ုပ်၏ ဖန်တီးသူလုပ်ငန်း",
+  "explore.action":"ဤဝန်ဆောင်မှုကို ကြည့်ရန်"
+});
 const EN = {
  "meta.title":document.title,
  "msg.ok":"Your email app is opening with your message ready. If nothing opens, write to {email} directly.",
@@ -135,7 +145,7 @@ function setLang(l){
   $$("[data-i18n-aria]").forEach(el=>{ el.setAttribute("aria-label",t(el.dataset.i18nAria)); });
   $$("[data-s]").forEach(el=>{ const [id,f]=el.dataset.s.split("|"); const v=sv(id,f); if(v!==undefined) el.textContent=v; });
   $$(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
-  updateSound(); syncLinks(l);
+  syncLinks(l); updateExplorer();
   document.title = PAGE==="home" ? t("meta.title") : sv(PAGE,"t")+" — Eminent Destino";
   try{ localStorage.setItem("edo-lang",l); }catch(e){}
 }
@@ -169,9 +179,32 @@ $$(".logo").forEach(logo=>{
 /* =====================================================================
    HERO VIDEO (home only)
    ===================================================================== */
-const hero=$("#hero"), vid=$("#heroVideo"), playBtn=$("#playBtn"), snd=$("#snd");
+const hero=$("#hero"), vid=$("#heroVideo"), playBtn=$("#playBtn");
 const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
-function updateSound(){ if(!snd||!vid) return; $("#sndTxt").textContent=t(vid.muted?"snd.on":"snd.off"); snd.setAttribute("aria-pressed",String(!vid.muted)); $("#sndWave").style.opacity=vid.muted?0:1; }
+
+/* A restrained pointer follower for desktop mice. It never replaces the native cursor. */
+if(!reduceMotion && matchMedia("(hover:hover) and (pointer:fine)").matches){
+  const orbit=document.createElement("span"); orbit.className="cursor-orbit";
+  orbit.setAttribute("aria-hidden","true"); document.body.appendChild(orbit);
+  let x=0,y=0,targetX=0,targetY=0,frame=0,seen=false;
+  function follow(){
+    x+=(targetX-x)*.24; y+=(targetY-y)*.24;
+    orbit.style.transform=`translate3d(${x}px,${y}px,0)`;
+    if(Math.abs(targetX-x)+Math.abs(targetY-y)>.4) frame=requestAnimationFrame(follow);
+    else frame=0;
+  }
+  document.addEventListener("pointermove",e=>{
+    if(e.pointerType!=="mouse") return;
+    targetX=Math.min(innerWidth-20,e.clientX+12);
+    targetY=Math.min(innerHeight-20,e.clientY+12);
+    if(!seen){ x=targetX; y=targetY; seen=true; }
+    orbit.classList.add("is-visible");
+    orbit.classList.toggle("is-interactive",!!e.target.closest("a,button,input,select,textarea,summary,[role=button]"));
+    if(!frame) frame=requestAnimationFrame(follow);
+  },{passive:true});
+  document.addEventListener("pointerleave",()=>{orbit.classList.remove("is-visible");seen=false;});
+  addEventListener("blur",()=>{orbit.classList.remove("is-visible");seen=false;});
+}
 if(hero&&vid){
   HERO_VIDEO_SOURCES.forEach((v,i)=>{
     const s=document.createElement("source"); s.src=v.src; if(v.type) s.type=v.type;
@@ -186,9 +219,31 @@ if(hero&&vid){
   vid.load(); if(reduceMotion) vid.pause(); else tryPlay();
   playBtn.addEventListener("click",()=>{ vid.muted=true; vid.play().then(()=>{ playBtn.hidden=true; }).catch(()=>{}); });
   vid.addEventListener("playing",()=>{ playBtn.hidden=true; });
-  snd.addEventListener("click",()=>{ vid.muted=!vid.muted; if(!vid.muted) vid.play().catch(()=>{}); updateSound(); });
   new IntersectionObserver(es=>es.forEach(e=>{ if(reduceMotion) return; e.isIntersecting?tryPlay():vid.pause(); }),{threshold:.05}).observe(hero);
   const eb=$("#eqbars"); for(let i=0;i<26;i++){ const b=document.createElement("i"); b.style.animationDelay=(-Math.random()*1.2).toFixed(2)+"s"; b.style.animationDuration=(0.7+Math.random()*0.9).toFixed(2)+"s"; eb.appendChild(b); }
+}
+
+/* Service explorer: a small recommendation, with a direct route to the full service. */
+let activeExplore="youtube-mcn";
+const exploreText={
+  "youtube-mcn":{en:"Channel monetization, rights support and a clear monthly settlement process.",my:"ချန်နယ်ဝင်ငွေရရှိရေး၊ မူပိုင်ခွင့်ပံ့ပိုးမှုနှင့် လစဉ်ငွေရှင်းမှု လုပ်ငန်းစဉ်။"},
+  "music-distribution":{en:"Release your recordings to music services and manage the catalog in one place.",my:"ဂီတပလက်ဖောင်းများသို့ သင့်အသံဖိုင်များ ဖြန့်ချိပြီး ကတ်တလော့ကို တစ်နေရာတည်းတွင် စီမံပါ။"},
+  "white-label":{en:"Give your creators distribution and network services under your own brand.",my:"သင့်အမှတ်တံဆိပ်ဖြင့် ဖန်တီးသူများကို ဖြန့်ချိရေးနှင့် ကွန်ရက်ဝန်ဆောင်မှုများ ပေးပါ။"}
+};
+function updateExplorer(){
+  const name=$("#explorerName"); if(!name) return;
+  name.textContent=sv(activeExplore,"t");
+  $("#explorerText").textContent=exploreText[activeExplore][LANG];
+  $("#explorerLink").href="services/"+activeExplore+".html"+(LANG==="my"?"?lang=my":"");
+  $$("[data-explore]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.explore===activeExplore)));
+}
+$$("[data-explore]").forEach(b=>b.addEventListener("click",()=>{activeExplore=b.dataset.explore;updateExplorer();}));
+
+/* The example is calculated from finalized earnings; it is not a payout promise. */
+const earnings=$("#mcnEarnings");
+if(earnings){
+  const update=()=>{$("#mcnResult").textContent=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(Math.max(0,Math.min(1e9,Number(earnings.value)||0))*.8);};
+  earnings.addEventListener("input",update); update();
 }
 
 /* =====================================================================

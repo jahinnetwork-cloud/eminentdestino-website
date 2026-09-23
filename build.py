@@ -5,6 +5,7 @@ SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
 SERVICES = json.load(open(f"{SRC}/services.json", encoding="utf-8"))
+MCN_COPY = json.load(open(f"{SRC}/mcn-copy.json", encoding="utf-8"))
 CSS = open(f"{SRC}/style.css", encoding="utf-8").read()
 CSS += """
 ol{margin:0;padding:0;list-style:none}
@@ -14,7 +15,8 @@ ol{margin:0;padding:0;list-style:none}
 .sec--line{border-top:1px solid var(--line)}
 """
 JS = open(f"{SRC}/site.js", encoding="utf-8").read().replace(
-    "/*__SERVICES__*/[]", json.dumps(SERVICES, ensure_ascii=False))
+    "/*__SERVICES__*/[]", json.dumps(SERVICES, ensure_ascii=False)).replace(
+    "/*__MCN_COPY__*/{}", json.dumps(MCN_COPY["my"], ensure_ascii=False))
 
 ICONS = {
  "youtube-mcn": '<rect x="3" y="5" width="18" height="14" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>',
@@ -295,15 +297,6 @@ def home_main():
         <a class="btn btn--ghost" href="#contact" data-interest="youtube-mcn"><span data-i18n="hero.cta2">Join the MCN</span></a>
       </div>
     </div>
-    <div class="hero__foot" data-in style="--i:5">
-      <div class="wrap">
-        <p class="caption" data-i18n="hero.caption">EDO Originals — Artist showreel</p>
-        <button type="button" class="snd" id="snd" aria-pressed="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="sndWave" d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>
-          <span id="sndTxt" data-i18n="snd.on">Sound on</span>
-        </button>
-      </div>
-    </div>
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee__track">{marquee()}</div></div>
@@ -343,6 +336,15 @@ def home_main():
       <div class="svc-head" data-reveal>
         <h2 data-i18n="svc.title">Everything your music and channels need.</h2>
         <p data-i18n="svc.sub">Nine services, one partner. Open any service to see how it works.</p>
+      </div>
+      <div class="explorer" data-reveal>
+        <div class="explorer__intro"><p data-i18n="explore.label">FIND YOUR STARTING POINT</p><h3 data-i18n="explore.title">What do you need help with?</h3></div>
+        <div class="explorer__choices" role="group" aria-label="Choose a service" data-i18n-aria="explore.aria">
+          <button type="button" data-explore="youtube-mcn" aria-pressed="true" data-i18n="explore.creator">My YouTube channel</button>
+          <button type="button" data-explore="music-distribution" aria-pressed="false" data-i18n="explore.artist">My music release</button>
+          <button type="button" data-explore="white-label" aria-pressed="false" data-i18n="explore.partner">My creator business</button>
+        </div>
+        <div class="explorer__result" aria-live="polite"><div><strong id="explorerName"></strong><p id="explorerText"></p></div><a class="go" id="explorerLink" href="services/youtube-mcn.html"><span data-i18n="explore.action">Explore this service</span>{ARROW}</a></div>
       </div>
       <div class="bento">{tiles()}
       </div>
@@ -428,7 +430,64 @@ def service_details(s):
       </div>
       <div>{faqs}</div>
     </div>
-  </section>'''
+    </section>'''
+
+def mcn_extra():
+    en = MCN_COPY["en"]
+    def t(key, tag="p", cls=""):
+        attr = f' class="{cls}"' if cls else ""
+        return f'<{tag}{attr} data-i18n="{key}">{esc(en[key])}</{tag}>'
+    pain = "".join(f'<article data-reveal style="--d:{i*.07:.2f}s"><span>0{i+1}</span>{t("mcn.pain"+str(i+1)+"h","h3")}{t("mcn.pain"+str(i+1)+"p")}</article>' for i in range(3))
+    benefits = "".join(f'<article data-reveal style="--d:{(i%3)*.08:.2f}s"><span aria-hidden="true">✦</span>{t("mcn.benefit"+str(i+1)+"h","h3")}{t("mcn.benefit"+str(i+1)+"p")}</article>' for i in range(8))
+    oo_steps = "".join(f'<article data-reveal style="--d:{i*.08:.2f}s"><span>0{i+1}</span>{t("mcn.oo"+str(i+1)+"h","h3")}{t("mcn.oo"+str(i+1)+"p")}</article>' for i in range(3))
+    return f'''
+  <section class="sec mcn-story sec--line" id="mcn-route">
+    <div class="wrap">
+      <div class="mcn-story__heading" data-reveal>{t("mcn.eyebrow","p","service-eyebrow")}{t("mcn.routeh","h2")}{t("mcn.routep","p","lead")}</div>
+      <div class="mcn-pains">{pain}</div>
+      <div class="mcn-bridge" data-reveal><span class="mcn-bridge__mark">EDO</span><div>{t("mcn.bridgeh","h3")}{t("mcn.bridgep")}</div></div>
+    </div>
+  </section>
+  <section class="sec mcn-oo" id="mcn-oo"><div class="wrap">
+    <div class="mcn-story__heading" data-reveal>{t("mcn.ooeye","p","service-eyebrow")}{t("mcn.ooh","h2")}{t("mcn.oop","p","lead")}</div>
+    <div class="mcn-oo__grid">{oo_steps}</div>
+    {t("mcn.oonote","p","mcn-note")}
+  </div></section>
+  <section class="sec sec--tint" id="mcn-payments">
+    <div class="wrap">
+      <div class="mcn-story__heading" data-reveal>{t("mcn.payeye","p","service-eyebrow")}{t("mcn.payh","h2")}{t("mcn.payp","p","lead")}</div>
+      <div class="mcn-timeline" data-reveal>
+        <div><span>01</span>{t("mcn.jan","h3")}{t("mcn.mar")}</div>
+        <div><span>02</span>{t("mcn.feb","h3")}{t("mcn.apr")}</div>
+        <div><span>03</span>{t("mcn.march","h3")}{t("mcn.may")}</div>
+      </div>
+      <div class="mcn-settlement" data-reveal>{t("mcn.settleh","h3")}{t("mcn.settlep")}</div>
+      <div class="mcn-calculator" data-reveal>
+        <div>{t("mcn.calch","h3")}{t("mcn.calcp")}
+          <label for="mcnEarnings" data-i18n="mcn.input">Finalized channel revenue (USD)</label>
+          <div class="mcn-calculator__input"><span>$</span><input type="number" id="mcnEarnings" min="0" step="1" value="1000" inputmode="decimal"></div>
+        </div>
+        <div class="mcn-calculator__result"><p data-i18n="mcn.share">Your share · example 80/20 agreement</p><output id="mcnResult" for="mcnEarnings">$800.00</output><p data-i18n="mcn.calcfoot">Example before any applicable withholding, transfer charges or adjustments. Your agreement and final statement control the actual amount.</p></div>
+      </div>
+      <div class="mcn-tax-policy" data-reveal><strong>0%</strong><div>{t("mcn.zeroh","h3")}{t("mcn.zerop")}</div></div>
+      {t("mcn.tax","p","mcn-note")}
+    </div>
+  </section>
+  <section class="sec mcn-support" id="mcn-support">
+    <div class="wrap"><div class="mcn-story__heading" data-reveal>{t("mcn.supporteye","p","service-eyebrow")}{t("mcn.supporth","h2")}{t("mcn.supportp","p","lead")}</div><div class="mcn-benefits">{benefits}</div>
+      <div class="mcn-addons" data-reveal>{t("mcn.addonsh","h3")}{t("mcn.addonsp")}</div>
+    </div>
+  </section>
+  <section class="sec sec--tint mcn-join" id="mcn-eligibility"><div class="wrap mcn-join__grid">
+    <div data-reveal>{t("mcn.joinh","h2")}{t("mcn.joinp","p","lead")}
+      <div class="mcn-examples"><div>{t("mcn.yesh","h3")}{t("mcn.yesp")}</div><div>{t("mcn.noh","h3")}{t("mcn.nop")}</div></div>
+      <a class="btn" href="#contact" data-interest="youtube-mcn"><span data-i18n="mcn.joincta">Ask for a channel review</span>{ARROW}</a>
+    </div>
+    <div class="mcn-criteria" data-reveal>{t("mcn.criteriah","h3")}<ul>
+      <li>{t("mcn.criteria1")}</li><li>{t("mcn.criteria2")}</li><li>{t("mcn.criteria3")}</li><li>{t("mcn.criteria4")}</li>
+    </ul></div></div></section>
+  <section class="sec mcn-b2b"><div class="wrap mcn-b2b__grid" data-reveal><div>{t("mcn.b2beye","p","service-eyebrow")}{t("mcn.b2bh","h2")}{t("mcn.b2bp","p","lead")}</div><div class="mcn-b2b__action">{t("mcn.b2bdetail")}<a class="btn" href="white-label.html"><span data-i18n="mcn.b2bcta">Explore B2B services</span>{ARROW}</a></div></div></section>
+  <div class="wrap mcn-sources">{t("mcn.sources")} <a href="https://support.google.com/youtube/answer/2737059" target="_blank" rel="noopener noreferrer">YouTube MCN overview</a> · <a href="https://support.google.com/youtube/answer/10391273" target="_blank" rel="noopener noreferrer">MCN tax guidance</a></div>'''
 
 def service_main(i):
     s = SERVICES[i]; sid = s["id"]; en = s["en"]
@@ -485,6 +544,7 @@ def service_main(i):
 
   <nav class="service-jump wrap" aria-label="Service sections" data-i18n-aria="detail.nav">
     <a href="#service-details" data-i18n="detail.overview">Service overview</a>
+    {'''<a href="#mcn-route" data-i18n="mcn.jump1">Myanmar &amp; MCN</a><a href="#mcn-oo" data-i18n="mcn.jumpoo">O&amp;O model</a><a href="#mcn-payments" data-i18n="mcn.jump2">Payments</a><a href="#mcn-eligibility" data-i18n="mcn.jump3">Eligibility</a>''' if sid == "youtube-mcn" else ""}
     <a href="#why-edo" data-i18n="detail.why">Why EDO</a>
     <a href="#how-it-works" data-i18n="sp.how">How it works</a>
     <a href="#questions" data-i18n="detail.faqShort">FAQs</a>
@@ -505,6 +565,7 @@ def service_main(i):
   </section>
 
 {details}
+{mcn_extra() if sid == "youtube-mcn" else ""}
   <section class="sec" id="how-it-works">
     <div class="wrap">
       <h2 class="steps-h" data-i18n="sp.how">How it works</h2>
