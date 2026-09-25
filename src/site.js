@@ -9,6 +9,7 @@ const PAGE = document.body.dataset.page || "home";  // "home" or a service id
 
 /* Logo: the first file that loads is used. Put your logo at assets/logo.png (recommended). */
 const LOGO_SOURCES = [
+  ROOT + "assets/logo.jpg",
   ROOT + "assets/logo.png",
   "https://storage.jahinmusic.com/2026-09-18%2023.58.40.jpg",
   "https://eminentdestino.com/edo-logo.png"
@@ -146,7 +147,8 @@ function setLang(l){
   $$("[data-s]").forEach(el=>{ const [id,f]=el.dataset.s.split("|"); const v=sv(id,f); if(v!==undefined) el.textContent=v; });
   $$(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
   syncLinks(l); updateExplorer();
-  document.title = PAGE==="home" ? t("meta.title") : sv(PAGE,"t")+" — Eminent Destino";
+  if(l==="my") document.title = PAGE==="home" ? t("meta.title") : sv(PAGE,"t")+" — Eminent Destino";
+  else document.title = document.querySelector('meta[property="og:title"]').content;
   try{ localStorage.setItem("edo-lang",l); }catch(e){}
 }
 $$(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));

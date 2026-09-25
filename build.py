@@ -186,7 +186,13 @@ PAYOUT_CHIPS = '''
           <ul class="chips"><li data-i18n="pay.mmk">Kyat (MMK)</li><li>USD</li></ul>
         </div>'''
 
-def head(title, desc):
+SITE = "https://eminentdestino.com"
+
+def head(title, desc, path, service=None):
+    url = SITE + path
+    data = {"@context":"https://schema.org", "@type":"Organization", "name":"Eminent Destino", "alternateName":"EDO", "url":SITE+"/", "logo":SITE+"/assets/logo.jpg", "description":"A Myanmar focused joint venture by Eminent (Jahin Music) and Destino for creators, artists and labels.", "contactPoint":{"@type":"ContactPoint", "email":"info@eminentdestino.com", "contactType":"customer support", "availableLanguage":["English","Burmese"]}}
+    if service:
+        data = {"@context":"https://schema.org", "@type":"Service", "name":service["en"]["t"], "description":desc, "url":url, "provider":{"@type":"Organization", "name":"Eminent Destino", "url":SITE+"/"}, "areaServed":{"@type":"Country", "name":"Myanmar"}}
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -195,9 +201,18 @@ def head(title, desc):
 <meta name="referrer" content="no-referrer">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc).replace('"', '&quot;')}">
+<link rel="canonical" href="{url}">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc).replace('"', '&quot;')}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Eminent Destino">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/assets/logo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')}</script>
 <meta name="theme-color" content="#FF6B00">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,8 +222,9 @@ def head(title, desc):
 </style>
 </head>'''
 
-def page(title, desc, root, page_id, home, main):
-    return f'''{head(title, desc)}
+def page(title, desc, root, page_id, home, main, service=None):
+    path = "/" if home else f"/services/{page_id}.html"
+    return f'''{head(title, desc, path, service)}
 <body data-root="{root}" data-page="{page_id}">
 <div id="progress" aria-hidden="true"></div>
 {header(home)}
@@ -597,15 +613,23 @@ def write_once(path, text):
     if not os.path.exists(path):
         open(path, "w", encoding="utf-8").write(text)
 
-home_title = "Eminent Destino (EDO) — Empowering Myanmar's Digital Ecosystem"
-home_desc = "YouTube MCN and CMS, Facebook Page management, music distribution, publishing, VEVO video distribution, copyright protection, music video production, plus white-label and API services for B2B clients. Built for Myanmar."
+home_title = "Eminent Destino | YouTube & Facebook Monetization in Myanmar"
+home_desc = "Eminent Destino helps Myanmar creators with YouTube MCN and CMS, Facebook monetization support, music distribution, publishing and copyright services."
 open(f"{OUT}/index.html", "w", encoding="utf-8").write(page(home_title, home_desc, "", "home", True, home_main()))
 
 for i, s in enumerate(SERVICES):
-    title = f'{s["en"]["t"]} — Eminent Destino'
-    desc = f'{s["en"]["tag"]} {s["en"]["p"]}'
+    seo = {
+        "youtube-mcn": ("YouTube Monetization in Myanmar | MCN & CMS — Eminent Destino", "Explore YouTube monetization support in Myanmar with Eminent Destino's MCN and CMS: channel review, rights management, Content ID and monthly payments."),
+        "facebook": ("Facebook Monetization in Myanmar | Page Support — Eminent Destino", "Facebook Page management and monetization support for Myanmar creators. Explore eligibility, copyright support and payout coordination with Eminent Destino."),
+        "music-distribution": ("Music Distribution in Myanmar | Eminent Destino", "Distribute music from Myanmar to global streaming platforms with Eminent Destino. Explore release delivery, rights support and royalty reporting for artists and labels."),
+    }
+    title, desc = seo.get(s["id"], (f'{s["en"]["t"]} in Myanmar | Eminent Destino', f'{s["en"]["tag"]} {s["en"]["p"][:100]}'))
     open(f'{OUT}/services/{s["id"]}.html', "w", encoding="utf-8").write(
-        page(title, desc, "../", s["id"], False, service_main(i)))
+        page(title, desc, "../", s["id"], False, service_main(i), s))
+
+urls = [SITE + "/"] + [SITE + "/services/" + s["id"] + ".html" for s in SERVICES]
+open(f"{OUT}/sitemap.xml", "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{url}</loc></url>\n' for url in urls) + '</urlset>\n')
+open(f"{OUT}/robots.txt", "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
 
 write_once(f"{OUT}/assets/README.txt", """ASSETS FOLDER
 =============

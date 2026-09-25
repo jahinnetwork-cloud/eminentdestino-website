@@ -4,11 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="referrer" content="no-referrer">
-<title>White Label Services — Eminent Destino</title>
-<meta name="description" content="Run our platform under your own brand. Launch a distribution, MCN and rights service under your own name, powered by EDO's infrastructure. Your clients see your brand, not ours.">
-<meta property="og:title" content="White Label Services — Eminent Destino">
-<meta property="og:description" content="Run our platform under your own brand. Launch a distribution, MCN and rights service under your own name, powered by EDO's infrastructure. Your clients see your brand, not ours.">
+<title>White Label Services in Myanmar | Eminent Destino</title>
+<meta name="description" content="Run our platform under your own brand. Launch a distribution, MCN and rights service under your own name, powered by EDO's infrastructure. ">
+<link rel="canonical" href="https://eminentdestino.com/services/white-label.html">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="White Label Services in Myanmar | Eminent Destino">
+<meta property="og:description" content="Run our platform under your own brand. Launch a distribution, MCN and rights service under your own name, powered by EDO's infrastructure. ">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Eminent Destino">
+<meta property="og:url" content="https://eminentdestino.com/services/white-label.html">
+<meta property="og:image" content="https://eminentdestino.com/assets/logo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "White Label Services", "description": "Run our platform under your own brand. Launch a distribution, MCN and rights service under your own name, powered by EDO's infrastructure. ", "url": "https://eminentdestino.com/services/white-label.html", "provider": {"@type": "Organization", "name": "Eminent Destino", "url": "https://eminentdestino.com/"}, "areaServed": {"@type": "Country", "name": "Myanmar"}}</script>
 <meta name="theme-color" content="#FF6B00">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -719,6 +728,7 @@ const PAGE = document.body.dataset.page || "home";  // "home" or a service id
 
 /* Logo: the first file that loads is used. Put your logo at assets/logo.png (recommended). */
 const LOGO_SOURCES = [
+  ROOT + "assets/logo.jpg",
   ROOT + "assets/logo.png",
   "https://storage.jahinmusic.com/2026-09-18%2023.58.40.jpg",
   "https://eminentdestino.com/edo-logo.png"
@@ -856,7 +866,8 @@ function setLang(l){
   $$("[data-s]").forEach(el=>{ const [id,f]=el.dataset.s.split("|"); const v=sv(id,f); if(v!==undefined) el.textContent=v; });
   $$(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
   syncLinks(l); updateExplorer();
-  document.title = PAGE==="home" ? t("meta.title") : sv(PAGE,"t")+" — Eminent Destino";
+  if(l==="my") document.title = PAGE==="home" ? t("meta.title") : sv(PAGE,"t")+" — Eminent Destino";
+  else document.title = document.querySelector('meta[property="og:title"]').content;
   try{ localStorage.setItem("edo-lang",l); }catch(e){}
 }
 $$(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
