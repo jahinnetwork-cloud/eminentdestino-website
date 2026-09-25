@@ -613,8 +613,8 @@ def write_once(path, text):
     if not os.path.exists(path):
         open(path, "w", encoding="utf-8").write(text)
 
-home_title = "Eminent Destino | YouTube & Facebook Monetization in Myanmar"
-home_desc = "Eminent Destino helps Myanmar creators with YouTube MCN and CMS, Facebook monetization support, music distribution, publishing and copyright services."
+home_title = "Eminent Destino | Myanmar Creator, Music & B2B Services"
+home_desc = "Myanmar creator services: YouTube and Facebook monetization, music distribution and publishing, copyright protection, VEVO, video production, white-label platforms and API services."
 open(f"{OUT}/index.html", "w", encoding="utf-8").write(page(home_title, home_desc, "", "home", True, home_main()))
 
 for i, s in enumerate(SERVICES):
