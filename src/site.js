@@ -184,28 +184,18 @@ $$(".logo").forEach(logo=>{
 const hero=$("#hero"), vid=$("#heroVideo"), playBtn=$("#playBtn");
 const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* A restrained pointer follower for desktop mice. It never replaces the native cursor. */
+/* Keep the accent centered on the native pointer hotspot, without a trailing delay. */
 if(!reduceMotion && matchMedia("(hover:hover) and (pointer:fine)").matches){
   const orbit=document.createElement("span"); orbit.className="cursor-orbit";
   orbit.setAttribute("aria-hidden","true"); document.body.appendChild(orbit);
-  let x=0,y=0,targetX=0,targetY=0,frame=0,seen=false;
-  function follow(){
-    x+=(targetX-x)*.24; y+=(targetY-y)*.24;
-    orbit.style.transform=`translate3d(${x}px,${y}px,0)`;
-    if(Math.abs(targetX-x)+Math.abs(targetY-y)>.4) frame=requestAnimationFrame(follow);
-    else frame=0;
-  }
   document.addEventListener("pointermove",e=>{
     if(e.pointerType!=="mouse") return;
-    targetX=Math.min(innerWidth-20,e.clientX+12);
-    targetY=Math.min(innerHeight-20,e.clientY+12);
-    if(!seen){ x=targetX; y=targetY; seen=true; }
+    orbit.style.transform=`translate3d(${e.clientX}px,${e.clientY}px,0) translate(-50%,-50%)`;
     orbit.classList.add("is-visible");
     orbit.classList.toggle("is-interactive",!!e.target.closest("a,button,input,select,textarea,summary,[role=button]"));
-    if(!frame) frame=requestAnimationFrame(follow);
   },{passive:true});
-  document.addEventListener("pointerleave",()=>{orbit.classList.remove("is-visible");seen=false;});
-  addEventListener("blur",()=>{orbit.classList.remove("is-visible");seen=false;});
+  document.addEventListener("pointerleave",()=>orbit.classList.remove("is-visible"));
+  addEventListener("blur",()=>orbit.classList.remove("is-visible"));
 }
 if(hero&&vid){
   HERO_VIDEO_SOURCES.forEach((v,i)=>{
