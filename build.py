@@ -186,7 +186,7 @@ PAYOUT_CHIPS = '''
           <ul class="chips"><li data-i18n="pay.mmk">Kyat (MMK)</li><li>USD</li></ul>
         </div>'''
 
-SITE = "https://eminentdestino.com"
+SITE = "https://www.eminentdestino.com"
 
 def head(title, desc, path, service=None):
     url = SITE + path
