@@ -184,18 +184,32 @@ $$(".logo").forEach(logo=>{
 const hero=$("#hero"), vid=$("#heroVideo"), playBtn=$("#playBtn");
 const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* Keep the accent centered on the native pointer hotspot, without a trailing delay. */
+/* Let the accent ease into the pointer hotspot with a short, bounded follow motion. */
 if(!reduceMotion && matchMedia("(hover:hover) and (pointer:fine)").matches){
   const orbit=document.createElement("span"); orbit.className="cursor-orbit";
   orbit.setAttribute("aria-hidden","true"); document.body.appendChild(orbit);
+  let x=0,y=0,targetX=0,targetY=0,frame=0,positioned=false;
+  const draw=()=>{
+    frame=0;
+    const dx=targetX-x,dy=targetY-y;
+    x+=dx*.28; y+=dy*.28;
+    if(Math.abs(dx)<.35 && Math.abs(dy)<.35){ x=targetX; y=targetY; }
+    orbit.style.transform=`translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
+    if(x!==targetX || y!==targetY) frame=requestAnimationFrame(draw);
+  };
   document.addEventListener("pointermove",e=>{
     if(e.pointerType!=="mouse") return;
-    orbit.style.transform=`translate3d(${e.clientX}px,${e.clientY}px,0) translate(-50%,-50%)`;
+    targetX=e.clientX; targetY=e.clientY;
+    if(!positioned){ x=targetX; y=targetY; positioned=true; }
+    const dx=targetX-x,dy=targetY-y,limit=28;
+    if(Math.hypot(dx,dy)>limit){ x=targetX-dx/Math.hypot(dx,dy)*limit; y=targetY-dy/Math.hypot(dx,dy)*limit; }
+    if(!frame) frame=requestAnimationFrame(draw);
     orbit.classList.add("is-visible");
     orbit.classList.toggle("is-interactive",!!e.target.closest("a,button,input,select,textarea,summary,[role=button]"));
   },{passive:true});
-  document.addEventListener("pointerleave",()=>orbit.classList.remove("is-visible"));
-  addEventListener("blur",()=>orbit.classList.remove("is-visible"));
+  const hide=()=>{ orbit.classList.remove("is-visible"); positioned=false; if(frame) cancelAnimationFrame(frame); frame=0; };
+  document.addEventListener("pointerleave",hide);
+  addEventListener("blur",hide);
 }
 if(hero&&vid){
   HERO_VIDEO_SOURCES.forEach((v,i)=>{
