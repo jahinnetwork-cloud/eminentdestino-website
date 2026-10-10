@@ -83,7 +83,7 @@ def footer(home):
           <img class="logo__img" alt="Eminent Destino" referrerpolicy="no-referrer" decoding="async">
           <span class="logo__fb"><b>EDO</b><em>Eminent Destino</em></span>
         </a>
-        <p style="margin-top:1rem;max-width:34ch" data-i18n="ft.line">A joint venture by Eminent (Jahin Music) and Destino. Built for Myanmar's digital creators.</p>
+        <p style="margin-top:1rem;max-width:34ch" data-i18n="ft.line">A joint venture by Eminent and Destino. Built for Myanmar's digital creators.</p>
       </div>
       <div>
         <h3 data-i18n="ft.services">Services</h3>
@@ -92,7 +92,7 @@ def footer(home):
       <div>
         <h3 data-i18n="ft.offices">Offices</h3>
         <ul>
-          <li><strong>Eminent (Jahin Music)</strong><br><span data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</span></li>
+          <li><strong>Eminent</strong><br><span data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</span></li>
           <li><strong>Destino</strong><br><span data-i18n="ft.destino">Myanmar</span></li>
         </ul>
       </div>
@@ -131,7 +131,7 @@ def contact(service_page):
           <div><dt>Email</dt><dd><a id="mailLink" href="#"></a></dd></div>
           <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/profile.php?id=61592448591808" target="_blank" rel="noopener noreferrer">Eminent Destino</a></dd></div>
           <div><dt>Telegram</dt><dd><a href="https://t.me/+959674092920" target="_blank" rel="noopener noreferrer">+95 9674092920</a></dd></div>
-          <div><dt data-i18n="ft.eminent.h">Eminent (Jahin Music)</dt><dd data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</dd></div>
+          <div><dt data-i18n="ft.eminent.h">Eminent</dt><dd data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</dd></div>
           <div><dt>Destino</dt><dd data-i18n="ft.destino">Myanmar</dd></div>
         </dl>
       </div>
@@ -190,7 +190,7 @@ SITE = "https://www.eminentdestino.com"
 
 def head(title, desc, path, service=None):
     url = SITE + path
-    data = {"@context":"https://schema.org", "@type":"Organization", "name":"Eminent Destino", "alternateName":"EDO", "url":SITE+"/", "logo":SITE+"/assets/logo.jpg", "description":"A Myanmar focused joint venture by Eminent (Jahin Music) and Destino for creators, artists and labels.", "contactPoint":{"@type":"ContactPoint", "email":"info@eminentdestino.com", "contactType":"customer support", "availableLanguage":["English","Burmese"]}}
+    data = {"@context":"https://schema.org", "@type":"Organization", "name":"Eminent Destino", "alternateName":"EDO", "url":SITE+"/", "logo":SITE+"/assets/logo.jpg", "description":"A Myanmar focused joint venture by Eminent and Destino for creators, artists and labels.", "contactPoint":{"@type":"ContactPoint", "email":"info@eminentdestino.com", "contactType":"customer support", "availableLanguage":["English","Burmese"]}}
     if service:
         data = {"@context":"https://schema.org", "@type":"Service", "name":service["en"]["t"], "description":desc, "url":url, "provider":{"@type":"Organization", "name":"Eminent Destino", "url":SITE+"/"}, "areaServed":{"@type":"Country", "name":"Myanmar"}}
     return f'''<!DOCTYPE html>
@@ -322,7 +322,7 @@ def home_main():
       <div class="about">
         <div data-reveal>
           <h2 data-i18n="about.title">Two companies. One platform for Myanmar.</h2>
-          <p data-i18n="about.p">In 2026, Eminent (Jahin Music) and Destino joined forces to create Eminent Destino: a platform built to give Myanmar's creators a better service than the options available today.</p>
+          <p data-i18n="about.p">In 2026, Eminent and Destino joined forces to create Eminent Destino: a platform built to give Myanmar's creators a better service than the options available today.</p>
           <div class="eq" aria-label="Eminent plus Destino equals EDO"><b>Eminent</b><span>×</span><b>Destino</b><span>=</span><b class="edo">EDO</b></div>
         </div>
         <div class="stats" data-reveal style="--d:.15s">
@@ -334,7 +334,7 @@ def home_main():
       </div>
       <div class="ents">
         <article class="ent ent--a" data-reveal>
-          <h3>Eminent (Jahin Music)</h3>
+          <h3>Eminent</h3>
           <p data-i18n="ent.a">A music distribution and YouTube MCN company based in the USA, with offices in the UAE and Bangladesh.</p>
           <ul class="tags"><li data-i18n="loc.usa">USA (HQ)</li><li data-i18n="loc.uae">UAE</li><li data-i18n="loc.bd">Bangladesh</li></ul>
         </article>
