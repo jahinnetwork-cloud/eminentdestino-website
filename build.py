@@ -94,6 +94,7 @@ def footer(home):
         <ul>
           <li><strong>Eminent</strong><br><span data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</span></li>
           <li><strong>Destino</strong><br><span data-i18n="ft.destino">Myanmar</span></li>
+          <li><strong>Eminent Destino</strong><br><span data-i18n="ft.edo">Singapore (HQ), Myanmar</span></li>
         </ul>
       </div>
       <div>
@@ -133,6 +134,7 @@ def contact(service_page):
           <div><dt>Telegram</dt><dd><a href="https://t.me/+959674092920" target="_blank" rel="noopener noreferrer">+95 9674092920</a></dd></div>
           <div><dt data-i18n="ft.eminent.h">Eminent</dt><dd data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</dd></div>
           <div><dt>Destino</dt><dd data-i18n="ft.destino">Myanmar</dd></div>
+          <div><dt>Eminent Destino</dt><dd data-i18n="ft.edo">Singapore (HQ), Myanmar</dd></div>
         </dl>
       </div>
       <form class="form" id="form" novalidate data-reveal style="--d:.12s">
