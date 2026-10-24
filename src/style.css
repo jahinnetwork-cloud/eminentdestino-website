@@ -102,7 +102,7 @@ html[lang="my"] h2{font-size:clamp(1.7rem,4vw,3.2rem)}
 .eqbars i{display:block;width:8px;height:100%;border-radius:8px;background:rgba(255,255,255,.75);transform-origin:bottom;animation:bar 1.2s ease-in-out infinite alternate}
 @keyframes bar{from{transform:scaleY(.12)}to{transform:scaleY(1)}}
 @media (max-width:700px){.eqbars{height:90px;bottom:170px;gap:4px}.eqbars i{width:6px}}
-.hero__inner{width:100%;padding-block:8.5rem 9.5rem}
+.hero__inner{width:min(var(--maxw),100% - 2*var(--gutter));padding-block:8.5rem 9.5rem}
 @media (max-width:700px){.hero__inner{padding-block:7.5rem 9rem}}
 .hero__badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:.5rem 1rem;border-radius:999px;font-size:.92rem;font-weight:500;max-width:100%}
 .hero__badge i{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.8);animation:ping 2s infinite;flex:none}
@@ -459,3 +459,37 @@ html[lang="my"] .sp-hero h1{font-size:clamp(1.9rem,5.2vw,4rem);max-width:none}
   .js .hero [data-in],.js [data-reveal]{opacity:1;transform:none;filter:none}
   .marquee__track{animation:none}
 }
+
+/* illustrations (decorative, from src/art.py) */
+.hero-art{position:absolute;right:max(var(--gutter),calc((100% - var(--maxw)) / 2));top:0;bottom:0;width:min(34vw,480px);z-index:-1;pointer-events:none}
+.hero-art__i{position:absolute;display:block;filter:drop-shadow(0 22px 28px rgba(60,15,0,.35));animation:float 6s ease-in-out infinite alternate}
+.hero-art__i svg{display:block;width:100%;height:auto}
+.hero-art__i--play{left:4%;top:12%;width:44%;--r:-4deg}
+.hero-art__i--vinyl{right:2%;top:10%;width:32%;animation-duration:7.5s;animation-delay:-2s;--r:6deg}
+.hero-art__i--note{left:40%;top:66%;width:17%;animation-duration:5s;animation-delay:-1s;--r:-8deg}
+.hero-art__i--chart{right:0;top:62%;width:38%;animation-duration:6.8s;animation-delay:-3s;--r:4deg}
+.hero-art__i--coin{left:6%;top:76%;width:16%;animation-duration:5.6s;animation-delay:-2.4s;--r:10deg}
+.hero-art__i--heart{left:52%;top:27%;width:12%;animation-duration:4.6s;animation-delay:-.6s;--r:-6deg}
+@keyframes float{to{transform:translateY(-18px) rotate(var(--r,3deg))}}
+.st__spin{transform-origin:80px 80px;animation:spin 7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.st__prog{transform-origin:left center;transform-box:fill-box;animation:prog 5s ease-in-out infinite alternate}
+@keyframes prog{from{transform:scaleX(.25)}to{transform:scaleX(1)}}
+.st__spark{transform-box:fill-box;transform-origin:center;animation:spark 2.8s ease-in-out infinite}
+.st__spark--b{animation-delay:-1.2s}
+@keyframes spark{50%{transform:scale(.55) rotate(25deg);opacity:.5}}
+@media (max-width:1000px){.hero-art{display:none}}
+.art{display:block;width:100%;height:auto}
+.art--map{max-width:520px;margin-top:2.2rem}
+.map__ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
+.map__arc{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;stroke-dasharray:4 9;animation:arc 1.4s linear infinite}
+@keyframes arc{to{stroke-dashoffset:-26}}
+.map__fl{animation:float 5.5s ease-in-out infinite alternate;--r:0deg}
+.map__fl--b{animation-duration:6.5s;animation-delay:-2s}
+.ent{position:relative}
+.badge{position:absolute;top:clamp(1.1rem,2vw,1.6rem);right:clamp(1.1rem,2vw,1.6rem);width:clamp(52px,6vw,76px);height:auto;transition:transform .5s var(--ease)}
+.ent:hover .badge{transform:rotate(-12deg) scale(1.08)}
+.ent h3,.ent p{padding-right:clamp(3.5rem,7vw,5rem)}
+.art--studio{max-width:460px;margin-top:2.6rem}
+.art--plane{width:clamp(86px,12vw,140px);margin:1.4rem 0 .4rem}
+@media (max-width:900px){.art--studio{max-width:380px}}

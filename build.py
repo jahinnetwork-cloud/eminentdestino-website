@@ -1,10 +1,12 @@
-import json, os, shutil, zipfile, re
+import json, os, shutil, sys, zipfile, re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 OUT = ROOT
 
 SERVICES = json.load(open(f"{SRC}/services.json", encoding="utf-8"))
+sys.path.insert(0, SRC)
+import art
 MCN_COPY = json.load(open(f"{SRC}/mcn-copy.json", encoding="utf-8"))
 CSS = open(f"{SRC}/style.css", encoding="utf-8").read()
 CSS += """
@@ -128,6 +130,7 @@ def contact(service_page):
       <div data-reveal>
         <h2 data-i18n="{title_key}">{title}</h2>
         <p class="lead" data-i18n="{sub_key}">{sub}</p>
+        {art.PLANE}
         <dl class="info">
           <div><dt>Email</dt><dd><a id="mailLink" href="#"></a></dd></div>
           <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/profile.php?id=61592448591808" target="_blank" rel="noopener noreferrer">Eminent Destino</a></dd></div>
@@ -304,6 +307,7 @@ def home_main():
       <video id="heroVideo" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     </div>
     <div class="eqbars" id="eqbars" aria-hidden="true"></div>
+    {art.HERO}
     <div class="hero__shade"></div>
     <button type="button" class="playbtn" id="playBtn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-i18n="play.btn">Tap to play video</span></button>
     <div class="wrap hero__inner">
@@ -326,6 +330,7 @@ def home_main():
           <h2 data-i18n="about.title">Two companies. One platform for Myanmar.</h2>
           <p data-i18n="about.p">In 2026, Eminent and Destino joined forces to create Eminent Destino: a platform built to give Myanmar's creators a better service than the options available today.</p>
           <div class="eq" aria-label="Eminent plus Destino equals EDO"><b>Eminent</b><span>×</span><b>Destino</b><span>=</span><b class="edo">EDO</b></div>
+          {art.MAP}
         </div>
         <div class="stats" data-reveal style="--d:.15s">
           <div class="stat"><b data-count="9">0</b><span data-i18n="stat.1">Services</span></div>
@@ -336,11 +341,13 @@ def home_main():
       </div>
       <div class="ents">
         <article class="ent ent--a" data-reveal>
+          {art.BADGE_A}
           <h3>Eminent</h3>
           <p data-i18n="ent.a">A music distribution and YouTube MCN company based in the USA, with offices in the UAE and Bangladesh.</p>
           <ul class="tags"><li data-i18n="loc.usa">USA (HQ)</li><li data-i18n="loc.uae">UAE</li><li data-i18n="loc.bd">Bangladesh</li></ul>
         </article>
         <article class="ent ent--b" data-reveal style="--d:.1s">
+          {art.BADGE_B}
           <h3>Destino</h3>
           <p data-i18n="ent.b">A Myanmar-based label and music distribution company with strong knowledge of the local market.</p>
           <ul class="tags"><li data-i18n="loc.mm">Myanmar</li></ul>
@@ -375,6 +382,7 @@ def home_main():
         <h2 data-i18n="mcn.title">Monetize in Myanmar with EDO.</h2>
         <p class="lead" data-i18n="mcn.intro">YouTube and Facebook monetization are not directly available for Myanmar accounts. Join EDO's Multi-Channel Network (MCN) and earn through our managed network, with policy guidance and support from a Burmese-speaking team.</p>{PAYOUT_CHIPS}
         <a class="btn" href="#contact" data-interest="youtube-mcn"><span data-i18n="mcn.cta">Join the MCN</span>{ARROW}</a>
+        {art.STUDIO}
       </div>
       <ul class="rows">{mcn_rows()}
       </ul>
