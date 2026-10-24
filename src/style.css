@@ -461,24 +461,12 @@ html[lang="my"] .sp-hero h1{font-size:clamp(1.9rem,5.2vw,4rem);max-width:none}
 }
 
 /* illustrations (decorative, from src/art.py) */
-.hero-art{position:absolute;right:max(var(--gutter),calc((100% - var(--maxw)) / 2));top:0;bottom:0;width:min(34vw,480px);z-index:-1;pointer-events:none}
-.hero-art__i{position:absolute;display:block;filter:drop-shadow(0 22px 28px rgba(60,15,0,.35));animation:float 6s ease-in-out infinite alternate}
-.hero-art__i svg{display:block;width:100%;height:auto}
-.hero-art__i--play{left:4%;top:12%;width:44%;--r:-4deg}
-.hero-art__i--vinyl{right:2%;top:10%;width:32%;animation-duration:7.5s;animation-delay:-2s;--r:6deg}
-.hero-art__i--note{left:40%;top:66%;width:17%;animation-duration:5s;animation-delay:-1s;--r:-8deg}
-.hero-art__i--chart{right:0;top:62%;width:38%;animation-duration:6.8s;animation-delay:-3s;--r:4deg}
-.hero-art__i--coin{left:6%;top:76%;width:16%;animation-duration:5.6s;animation-delay:-2.4s;--r:10deg}
-.hero-art__i--heart{left:52%;top:27%;width:12%;animation-duration:4.6s;animation-delay:-.6s;--r:-6deg}
 @keyframes float{to{transform:translateY(-18px) rotate(var(--r,3deg))}}
-.st__spin{transform-origin:80px 80px;animation:spin 7s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
 .st__prog{transform-origin:left center;transform-box:fill-box;animation:prog 5s ease-in-out infinite alternate}
 @keyframes prog{from{transform:scaleX(.25)}to{transform:scaleX(1)}}
 .st__spark{transform-box:fill-box;transform-origin:center;animation:spark 2.8s ease-in-out infinite}
 .st__spark--b{animation-delay:-1.2s}
 @keyframes spark{50%{transform:scale(.55) rotate(25deg);opacity:.5}}
-@media (max-width:1000px){.hero-art{display:none}}
 .art{display:block;width:100%;height:auto}
 .art--map{max-width:520px;margin-top:2.2rem}
 .map__ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
@@ -493,3 +481,47 @@ html[lang="my"] .sp-hero h1{font-size:clamp(1.9rem,5.2vw,4rem);max-width:none}
 .art--studio{max-width:460px;margin-top:2.6rem}
 .art--plane{width:clamp(86px,12vw,140px);margin:1.4rem 0 .4rem}
 @media (max-width:900px){.art--studio{max-width:380px}}
+
+/* service tile illustrations */
+.tile__art{--c0:#fff;--c1:var(--orange);--c2:var(--orange-deep);--c3:var(--orange-soft);--c4:var(--ink);position:absolute !important;right:clamp(.7rem,1.6vw,1.3rem);bottom:clamp(.7rem,1.6vw,1.2rem);width:clamp(96px,30%,190px);height:auto;pointer-events:none;transition:transform .5s var(--ease)}
+.tile--hot .tile__art{--c0:#E04E00;--c1:#fff;--c2:#FFE1C7;--c3:rgba(255,255,255,.28);--c4:#8A2E00}
+.tile:hover .tile__art{transform:translateY(-6px) scale(1.07) rotate(-2deg)}
+.tile__txt{padding-right:clamp(100px,30%,190px)}
+.tile .go{align-self:flex-start}
+.a0{fill:var(--c0)}.a1{fill:var(--c1)}.a2{fill:var(--c2)}.a3{fill:var(--c3)}.a4{fill:var(--c4)}
+.s0,.s1,.s2,.s4{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.s0{stroke:var(--c0)}.s1{stroke:var(--c1)}.s2{stroke:var(--c2)}.s4{stroke:var(--c4)}
+.tile__art *{transform-box:fill-box;transform-origin:center}
+.an-float{animation:float 4.6s ease-in-out infinite alternate;--r:0deg}
+.an-pulse{animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.14)}}
+.an-bar{transform-origin:bottom !important;animation:barUp 2.6s ease-in-out infinite alternate}
+@keyframes barUp{from{transform:scaleY(.55)}to{transform:scaleY(1)}}
+.an-orbit{transform-origin:80px 65px !important;transform-box:view-box !important;animation:spin 9s linear infinite}
+.an-orbit--r{animation-direction:reverse;animation-duration:6s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.an-note{animation:bob 2.4s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(4px)}to{transform:translateY(-5px)}}
+.an-pen{animation:write 2.6s ease-in-out infinite alternate}
+@keyframes write{to{transform:translate(-8px,-6px) rotate(35deg)}}
+.an-scan{animation:scan 3.2s linear infinite}
+@keyframes scan{from{transform:translateX(-30px)}to{transform:translateX(150px)}}
+.an-spark{animation:spark 2.8s ease-in-out infinite}
+.an-pop{animation:popUp 2.4s ease-in-out infinite}
+@keyframes popUp{0%,100%{transform:scale(1)}50%{transform:scale(1.14) rotate(-4deg)}}
+.an-dot{animation:dotUp 1.2s ease-in-out infinite}
+@keyframes dotUp{50%{transform:translateY(-7px)}}
+.an-fan{animation:fan 3.4s ease-in-out infinite alternate;transform-origin:50% 90% !important}
+@keyframes fan{from{transform:rotate(-3deg)}to{transform:rotate(5deg)}}
+.an-swatch{animation:swatch 2.4s ease-in-out infinite}
+@keyframes swatch{50%{transform:scale(1.35)}}
+.an-load{transform-origin:left center !important;animation:load 2.8s ease-in-out infinite}
+@keyframes load{0%{transform:scaleX(.05)}70%,100%{transform:scaleX(1)}}
+.an-ping{animation:ringOut 2.4s ease-out infinite}
+@keyframes ringOut{from{transform:scale(.8);opacity:.9}to{transform:scale(1.12);opacity:0}}
+.an-check{stroke-dasharray:30;animation:draw 2.4s ease-in-out infinite}
+@keyframes draw{0%{stroke-dashoffset:30}45%,100%{stroke-dashoffset:0}}
+.an-clap{transform-origin:left bottom !important;animation:clap 2.2s ease-in-out infinite}
+@keyframes clap{0%,55%,100%{transform:rotate(0)}30%{transform:rotate(-22deg)}}
+.an-d1{animation-delay:-.4s}.an-d2{animation-delay:-.8s}.an-d3{animation-delay:-1.2s}
+@media (max-width:620px){.tile__art{width:clamp(96px,34%,150px)}.tile__txt{padding-right:clamp(100px,34%,150px)}.tile{padding-bottom:5.2rem}}

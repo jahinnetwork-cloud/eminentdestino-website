@@ -255,8 +255,9 @@ def tiles():
         who = f'<span class="who" data-s="{s["id"]}|who">{esc(s["en"]["who"])}</span>' if "who" in s["en"] else ""
         out.append(f'''
         <a class="{cls}" href="services/{s["id"]}.html" data-tilt data-reveal style="--d:{(i%3)*0.08:.2f}s">
+          {art.SERVICE_ART[s["id"]]}
           <div class="tile__top"><span class="ico">{svg(ICONS[s["id"]])}</span>{who}</div>
-          <div><h3 data-s="{s["id"]}|t">{esc(s["en"]["t"])}</h3><p data-s="{s["id"]}|tag">{esc(s["en"]["tag"])}</p></div>
+          <div class="tile__txt"><h3 data-s="{s["id"]}|t">{esc(s["en"]["t"])}</h3><p data-s="{s["id"]}|tag">{esc(s["en"]["tag"])}</p></div>
           <span class="go"><span data-i18n="svc.more">Learn more</span>{ARROW}</span>
         </a>''')
     return "".join(out)
@@ -307,7 +308,6 @@ def home_main():
       <video id="heroVideo" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
     </div>
     <div class="eqbars" id="eqbars" aria-hidden="true"></div>
-    {art.HERO}
     <div class="hero__shade"></div>
     <button type="button" class="playbtn" id="playBtn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-i18n="play.btn">Tap to play video</span></button>
     <div class="wrap hero__inner">

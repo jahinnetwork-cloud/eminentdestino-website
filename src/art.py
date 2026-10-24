@@ -5,44 +5,6 @@ O, OD, OS, OT, INK, W = "#FF6B00", "#E04E00", "#FFE6D1", "#FFF5EC", "#1E1611", "
 def _svg(cls, vb, inner, extra=""):
     return f'<svg class="{cls}" viewBox="{vb}" aria-hidden="true" focusable="false"{extra}>{inner}</svg>'
 
-# ---- hero stickers: float over the video, right-hand side (desktop only)
-_STICKER_PLAY = _svg("st st--play", "0 0 220 150", f'''
-  <rect x="6" y="6" width="208" height="138" rx="26" fill="{W}"/>
-  <rect x="22" y="22" width="176" height="82" rx="16" fill="{O}"/>
-  <circle cx="110" cy="63" r="26" fill="{W}"/><path d="M102 50v26l22-13z" fill="{O}"/>
-  <rect x="22" y="116" width="176" height="8" rx="4" fill="{OS}"/><rect x="22" y="116" width="104" height="8" rx="4" fill="{OD}" class="st__prog"/>''')
-
-_STICKER_VINYL = _svg("st st--vinyl", "0 0 160 160", f'''
-  <g class="st__spin"><circle cx="80" cy="80" r="76" fill="{INK}"/>
-  <circle cx="80" cy="80" r="62" fill="none" stroke="#3a2c22" stroke-width="2"/><circle cx="80" cy="80" r="50" fill="none" stroke="#3a2c22" stroke-width="2"/>
-  <circle cx="80" cy="80" r="28" fill="{O}"/><path d="M60 62a28 28 0 0 1 40 0" fill="none" stroke="{W}" stroke-opacity=".55" stroke-width="5" stroke-linecap="round"/>
-  <circle cx="80" cy="80" r="6" fill="{W}"/></g>''')
-
-_STICKER_NOTE = _svg("st st--note", "0 0 110 110", f'''
-  <circle cx="55" cy="55" r="52" fill="{W}"/><circle cx="55" cy="55" r="40" fill="{O}"/>
-  <path d="M47 71V40l24-6v31" fill="none" stroke="{W}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <ellipse cx="41" cy="72" rx="8" ry="6.5" fill="{W}"/><ellipse cx="65" cy="66" rx="8" ry="6.5" fill="{W}"/>''')
-
-_STICKER_CHART = _svg("st st--chart", "0 0 190 140", f'''
-  <rect x="5" y="5" width="180" height="130" rx="24" fill="{W}"/>
-  <rect x="26" y="78" width="22" height="38" rx="6" fill="{OS}"/><rect x="58" y="62" width="22" height="54" rx="6" fill="#FFB46B"/>
-  <rect x="90" y="46" width="22" height="70" rx="6" fill="{O}"/><rect x="122" y="28" width="22" height="88" rx="6" fill="{OD}"/>
-  <path d="M30 60 70 44l30-12 52-14" fill="none" stroke="{INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M142 16l16 2-6 15" fill="none" stroke="{INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>''')
-
-_STICKER_COIN = _svg("st st--coin", "0 0 100 100", f'''
-  <circle cx="50" cy="50" r="46" fill="#FFC53D"/><circle cx="50" cy="50" r="36" fill="none" stroke="#E5A100" stroke-width="4"/>
-  <path d="M58 37c-2-4-14-5-16 2-2 8 18 4 16 13-2 8-15 7-18 1M50 29v6M50 66v6" fill="none" stroke="#B37800" stroke-width="5" stroke-linecap="round"/>''')
-
-_STICKER_HEART = _svg("st st--heart", "0 0 100 100", f'''
-  <circle cx="50" cy="50" r="46" fill="{W}"/>
-  <path d="M50 72C30 58 24 47 28 38c4-9 16-9 22 0 6-9 18-9 22 0 4 9-2 20-22 34z" fill="{OD}"/>''')
-
-HERO = '<div class="hero-art" aria-hidden="true">' + "".join([
-    f'<span class="hero-art__i hero-art__i--{n}">{s}</span>' for n, s in
-    [("play", _STICKER_PLAY), ("vinyl", _STICKER_VINYL), ("note", _STICKER_NOTE),
-     ("chart", _STICKER_CHART), ("coin", _STICKER_COIN), ("heart", _STICKER_HEART)]]) + '</div>'
-
 # ---- about: Eminent + Destino connect around the globe
 def _pin(x, y, c, d):
     return (f'<g transform="translate({x} {y})"><circle r="9" fill="{c}" class="map__ring" style="animation-delay:{d}s"/>'
@@ -94,3 +56,63 @@ STUDIO = _svg("art art--studio", "0 0 480 340", f'''
 PLANE = _svg("art art--plane", "0 0 180 140", f'''
   <path class="map__arc" d="M8 120C40 130 66 96 92 84" style="animation-delay:0s"/>
   <g class="map__fl"><path d="M164 14 30 66l40 14 14 36 22-26 34 24z" fill="{O}"/><path d="M164 14 70 80l14 36 6-30z" fill="{OD}"/><path d="M164 14 90 86l-6 30" fill="none" stroke="{W}" stroke-opacity=".6" stroke-width="2"/></g>''')
+
+
+# ---- service tiles: one animated illustration each. Colours come from CSS vars set on .tile__art
+def _a(inner): return f'<svg class="tile__art" viewBox="0 0 160 130" aria-hidden="true" focusable="false">{inner}</svg>'
+
+SERVICE_ART = {
+"youtube-mcn": _a("""
+  <rect class="a3" x="6" y="14" width="108" height="76" rx="14"/><rect class="a1" x="13" y="21" width="94" height="60" rx="9"/>
+  <circle class="a0 an-pulse" cx="60" cy="51" r="17"/><path class="a1" d="M54 42v18l16-9z"/>
+  <rect class="a3" x="34" y="94" width="52" height="7" rx="3.5"/>
+  <rect class="a2 an-bar" x="122" y="82" width="11" height="30" rx="4"/><rect class="a1 an-bar an-d1" x="137" y="62" width="11" height="50" rx="4"/>
+  <circle class="a2 an-float" cx="138" cy="34" r="10"/><path class="a0 an-float" d="M138 29l1.8 3.7 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6z"/>"""),
+"music-distribution": _a("""
+  <circle class="a3" cx="80" cy="65" r="36"/><ellipse class="s1" cx="80" cy="65" rx="15" ry="36" stroke-width="3"/><ellipse class="s1" cx="80" cy="65" rx="36" ry="13" stroke-width="3"/>
+  <circle class="s1" cx="80" cy="65" r="36" stroke-width="3"/>
+  <g class="an-orbit"><circle class="s1" cx="80" cy="65" r="58" stroke-width="2" stroke-dasharray="3 7"/><circle class="a1" cx="138" cy="65" r="8"/></g>
+  <g class="an-orbit an-orbit--r"><circle class="a2" cx="22" cy="65" r="6"/></g>
+  <circle class="a1" cx="80" cy="65" r="17"/><path class="s0" d="M76 72V57l10-3v14" stroke-width="3"/><circle class="a0" cx="73" cy="73" r="4"/><circle class="a0" cx="83" cy="69" r="4"/>"""),
+"music-publishing": _a("""
+  <rect class="a3" x="34" y="8" width="92" height="114" rx="12"/>
+  <path class="s2" d="M46 32h68M46 38h68M46 44h68M46 50h68M46 56h68M46 76h68M46 82h68M46 88h68M46 94h68M46 100h68" stroke-width="1.6"/>
+  <g class="an-note"><ellipse class="a1" cx="62" cy="52" rx="6" ry="4.6"/><path class="s1" d="M67 52V28" stroke-width="2.6"/></g>
+  <g class="an-note an-d1"><ellipse class="a2" cx="88" cy="46" rx="6" ry="4.6"/><path class="s2" d="M93 46V24" stroke-width="2.6"/></g>
+  <g class="an-note an-d2"><ellipse class="a1" cx="76" cy="96" rx="6" ry="4.6"/><path class="s1" d="M81 96V72" stroke-width="2.6"/></g>
+  <g class="an-note an-d3"><ellipse class="a4" cx="102" cy="90" rx="6" ry="4.6"/><path class="s4" d="M107 90V68" stroke-width="2.6"/></g>
+  <rect class="a2 an-pen" x="116" y="86" width="9" height="34" rx="4" transform="rotate(35 120 100)"/>"""),
+"vevo": _a("""
+  <rect class="a4" x="8" y="16" width="144" height="86" rx="14"/>
+  <g class="an-scan"><rect class="a1" x="8" y="16" width="30" height="86" opacity=".28"/></g>
+  <path class="s1" d="M54 44l15 33 15-33" stroke-width="7"/><path class="s0" d="M92 44v32M92 44h18M92 60h14M92 76h18" stroke-width="5"/>
+  <rect class="a3" x="58" y="106" width="44" height="7" rx="3.5"/>
+  <path class="a1 an-spark" d="M140 8l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path class="a2 an-spark an-d2" d="M18 4l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>"""),
+"facebook": _a("""
+  <rect class="a3" x="10" y="12" width="104" height="106" rx="16"/><rect class="a1" x="17" y="19" width="90" height="36" rx="10"/>
+  <circle class="a0" cx="40" cy="58" r="15"/><circle class="a2" cx="40" cy="58" r="11"/>
+  <rect class="a2" x="60" y="62" width="40" height="7" rx="3.5"/><rect class="a1" x="22" y="84" width="80" height="7" rx="3.5" opacity=".6"/><rect class="a1" x="22" y="97" width="54" height="7" rx="3.5" opacity=".6"/>
+  <g class="an-pop"><circle class="a1" cx="130" cy="42" r="22"/><rect class="a0" x="119" y="44" width="7" height="16" rx="2"/><path class="a0" d="M129 44l5-12c3 0 6 2 5 6l-1.5 5h8c3 0 4 3 3 6l-3 8c-1 2-2 3-4 3h-12z"/></g>
+  <g class="an-float"><rect class="a2" x="112" y="84" width="44" height="28" rx="12"/><circle class="a0 an-dot" cx="124" cy="98" r="3"/><circle class="a0 an-dot an-d1" cx="134" cy="98" r="3"/><circle class="a0 an-dot an-d2" cx="144" cy="98" r="3"/></g>"""),
+"white-label": _a("""
+  <g class="an-fan"><rect class="a3" x="34" y="22" width="86" height="64" rx="13" transform="rotate(-14 77 54)"/><rect class="a2" x="34" y="26" width="86" height="64" rx="13" transform="rotate(-5 77 58)" opacity=".85"/></g>
+  <rect class="a1" x="36" y="30" width="88" height="66" rx="13"/><circle class="a0" cx="58" cy="52" r="10"/><rect class="a0" x="76" y="46" width="36" height="6" rx="3"/><rect class="a0" x="76" y="58" width="24" height="6" rx="3" opacity=".7"/><rect class="a0" x="48" y="76" width="64" height="6" rx="3" opacity=".55"/>
+  <circle class="a1 an-swatch" cx="48" cy="114" r="8"/><circle class="a2 an-swatch an-d1" cx="72" cy="114" r="8"/><circle class="a4 an-swatch an-d2" cx="96" cy="114" r="8"/><circle class="a3 an-swatch an-d3" cx="120" cy="114" r="8"/>
+  <path class="a1 an-spark" d="M140 18l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/>"""),
+"api": _a("""
+  <path class="s1" d="M52 24c-13 0-13 7-13 16v10c0 7-5 11-11 11 6 0 11 4 11 11v10c0 9 0 16 13 16" stroke-width="7"/>
+  <path class="s1" d="M108 24c13 0 13 7 13 16v10c0 7 5 11 11 11-6 0-11 4-11 11v10c0 9 0 16-13 16" stroke-width="7"/>
+  <circle class="a2 an-dot" cx="64" cy="65" r="6"/><circle class="a1 an-dot an-d1" cx="80" cy="65" r="6"/><circle class="a4 an-dot an-d2" cx="96" cy="65" r="6"/>
+  <rect class="a3" x="28" y="108" width="104" height="8" rx="4"/><rect class="a1 an-load" x="28" y="108" width="104" height="8" rx="4"/>"""),
+"copyright": _a("""
+  <circle class="s1 an-ping" cx="80" cy="64" r="48" stroke-width="2"/>
+  <path class="a3 s1" d="M80 8l42 14v32c0 30-19 48-42 58-23-10-42-28-42-58V22z" stroke-width="5"/>
+  <circle class="s1" cx="80" cy="60" r="20" stroke-width="4"/><path class="s1" d="M88 51a12 12 0 1 0 0 18" stroke-width="4.5"/>
+  <circle class="a1 an-pop" cx="126" cy="104" r="16"/><path class="s0 an-check" d="M118 104l6 6 11-12" stroke-width="4.5"/>"""),
+"video-production": _a("""
+  <rect class="a4" x="22" y="56" width="116" height="64" rx="10"/>
+  <g class="an-clap"><rect class="a1" x="22" y="30" width="116" height="24" rx="6"/>
+  <path class="a0" d="M36 30h16L40 54H24zM64 30h16L68 54H52zM92 30h16L96 54H80zM120 30h14L122 54h-14z"/></g>
+  <path class="a1 an-pulse" d="M70 76v28l26-14z"/>
+  <path class="a2 an-spark" d="M142 12l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><circle class="a1 an-float" cx="14" cy="44" r="5"/>"""),
+}
