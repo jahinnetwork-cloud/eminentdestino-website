@@ -83,11 +83,16 @@ SERVICE_ART = {
   <g class="an-note an-d3"><ellipse class="a4" cx="102" cy="90" rx="6" ry="4.6"/><path class="s4" d="M107 90V68" stroke-width="2.6"/></g>
   <rect class="a2 an-pen" x="116" y="86" width="9" height="34" rx="4" transform="rotate(35 120 100)"/>"""),
 "vevo": _a("""
-  <rect class="a4" x="8" y="16" width="144" height="86" rx="14"/>
-  <g class="an-scan"><rect class="a1" x="8" y="16" width="30" height="86" opacity=".28"/></g>
-  <path class="s1" d="M54 44l15 33 15-33" stroke-width="7"/><path class="s0" d="M92 44v32M92 44h18M92 60h14M92 76h18" stroke-width="5"/>
-  <rect class="a3" x="58" y="106" width="44" height="7" rx="3.5"/>
-  <path class="a1 an-spark" d="M140 8l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path class="a2 an-spark an-d2" d="M18 4l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>"""),
+  <rect class="a4" x="8" y="6" width="144" height="74" rx="13"/>
+  <g class="an-scan"><rect class="a1" x="8" y="6" width="26" height="74" opacity=".3"/></g>
+  <circle class="s1 an-ping" cx="80" cy="40" r="22" stroke-width="2.5"/><circle class="a1 an-pulse" cx="80" cy="40" r="19"/><path class="a0" d="M74 30v20l17-10z"/>
+  <rect class="a3" x="20" y="68" width="120" height="5" rx="2.5" opacity=".35"/><rect class="a1 an-load" x="20" y="68" width="120" height="5" rx="2.5"/>
+  <g class="an-vevo" transform="translate(4 0)">
+    <path class="s1 an-note" d="M10 90l12 29 12-29" stroke-width="7"/>
+    <path class="s2 an-note an-d1" d="M46 90v29M46 90h17M46 104h14M46 119h17" stroke-width="6.5"/>
+    <path class="s1 an-note an-d2" d="M74 90l12 29 12-29" stroke-width="7"/>
+    <ellipse class="s2 an-note an-d3" cx="125" cy="104.5" rx="11" ry="14" stroke-width="6.5"/>
+  </g>"""),
 "facebook": _a("""
   <rect class="a3" x="10" y="12" width="104" height="106" rx="16"/><rect class="a1" x="17" y="19" width="90" height="36" rx="10"/>
   <circle class="a0" cx="40" cy="58" r="15"/><circle class="a2" cx="40" cy="58" r="11"/>

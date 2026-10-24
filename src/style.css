@@ -524,4 +524,4 @@ html[lang="my"] .sp-hero h1{font-size:clamp(1.9rem,5.2vw,4rem);max-width:none}
 .an-clap{transform-origin:left bottom !important;animation:clap 2.2s ease-in-out infinite}
 @keyframes clap{0%,55%,100%{transform:rotate(0)}30%{transform:rotate(-22deg)}}
 .an-d1{animation-delay:-.4s}.an-d2{animation-delay:-.8s}.an-d3{animation-delay:-1.2s}
-@media (max-width:620px){.tile__art{width:clamp(96px,34%,150px)}.tile__txt{padding-right:clamp(100px,34%,150px)}.tile{padding-bottom:5.2rem}}
+@media (max-width:620px){.tile__art{width:clamp(104px,38%,140px)}.tile__txt{padding-right:0}.tile{padding-bottom:7.6rem}}
