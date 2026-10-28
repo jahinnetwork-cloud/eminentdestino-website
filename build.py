@@ -188,7 +188,7 @@ PAYOUT_CHIPS = '''
         </div>
         <div class="chipgroup">
           <h3 data-i18n="mcn.currency">Payout currencies</h3>
-          <ul class="chips"><li data-i18n="pay.mmk">Kyat (MMK)</li><li>USD</li></ul>
+          <ul class="chips"><li data-i18n="pay.mmk">SGD</li><li>USD</li></ul>
         </div>'''
 
 SITE = "https://www.eminentdestino.com"
@@ -275,7 +275,7 @@ MCN_ROWS = [
   '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>'),
  ("Choose your payout method", "Bank transfer, crypto, KBZ Pay, Payoneer or PayPal. Pick whatever works best for you.",
   '<rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="2.6"/>'),
- ("Kyat or USD", "Get paid directly in Kyat (MMK), or in USD if you prefer. The exchange rate is shown before every payout.",
+ ("SGD or USD", "Get paid directly in SGD, or in USD if you prefer. The exchange rate is shown before every payout.",
   '<path d="M7 7h11l-3-3M17 17H6l3 3"/>'),
  ("Competitive payout rate", "A competitive revenue share with no hidden EDO fees. Any personal or local taxes remain your responsibility.",
   '<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>'),
@@ -335,7 +335,7 @@ def home_main():
         <div class="stats" data-reveal style="--d:.15s">
           <div class="stat"><b data-count="9">0</b><span data-i18n="stat.1">Services</span></div>
           <div class="stat"><b data-count="5">0</b><span data-i18n="stat.2">Payout methods</span></div>
-          <div class="stat"><b class="sm">MMK + USD</b><span data-i18n="stat.3">Payout currencies</span></div>
+          <div class="stat"><b class="sm">SGD + USD</b><span data-i18n="stat.3">Payout currencies</span></div>
           <div class="stat"><b class="sm" data-i18n="stat.4v">Monthly</b><span data-i18n="stat.4">Payout cycle</span></div>
         </div>
       </div>
@@ -380,7 +380,7 @@ def home_main():
     <div class="wrap mcn">
       <div class="mcn__side" data-reveal>
         <h2 data-i18n="mcn.title">Monetize in Singapore with EDO.</h2>
-        <p class="lead" data-i18n="mcn.intro">YouTube and Facebook monetization are not directly available for Singapore accounts. Join EDO's Multi-Channel Network (MCN) and earn through our managed network, with policy guidance and support from a Burmese-speaking team.</p>{PAYOUT_CHIPS}
+        <p class="lead" data-i18n="mcn.intro">Grow your YouTube and Facebook channels with EDO. Join our Multi-Channel Network (MCN) and earn through our managed network, with policy guidance and support from a Burmese-speaking team.</p>{PAYOUT_CHIPS}
         <a class="btn" href="#contact" data-interest="youtube-mcn"><span data-i18n="mcn.cta">Join the MCN</span>{ARROW}</a>
         {art.STUDIO}
       </div>
