@@ -85,7 +85,7 @@ def footer(home):
           <img class="logo__img" alt="Eminent Destino" referrerpolicy="no-referrer" decoding="async">
           <span class="logo__fb"><b>EDO</b><em>Eminent Destino</em></span>
         </a>
-        <p style="margin-top:1rem;max-width:34ch" data-i18n="ft.line">A joint venture by Eminent and Destino. Built for Myanmar's digital creators.</p>
+        <p style="margin-top:1rem;max-width:34ch" data-i18n="ft.line">A joint venture by Eminent and Destino. Built for Singapore's digital creators.</p>
       </div>
       <div>
         <h3 data-i18n="ft.services">Services</h3>
@@ -95,8 +95,8 @@ def footer(home):
         <h3 data-i18n="ft.offices">Offices</h3>
         <ul>
           <li><strong>Eminent</strong><br><span data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</span></li>
-          <li><strong>Destino</strong><br><span data-i18n="ft.destino">Myanmar</span></li>
-          <li><strong>Eminent Destino</strong><br><span data-i18n="ft.edo">Singapore (HQ), Myanmar</span></li>
+          <li><strong>Destino</strong><br><span data-i18n="ft.destino">Singapore</span></li>
+          <li><strong>Eminent Destino</strong><br><span data-i18n="ft.edo">Singapore (HQ)</span></li>
         </ul>
       </div>
       <div>
@@ -123,7 +123,7 @@ def contact(service_page):
     title_key, sub_key = ("ct2.title", "ct2.sub") if service_page else ("ct.title", "ct.sub")
     title = "Ready to start? Tell us about your project." if service_page else "Your work deserves a bigger stage."
     sub = ("Send us a few details and our team will reply by email." if service_page
-           else "Artists, labels, creators and media partners — let's build your global digital future from Myanmar.")
+           else "Artists, labels, creators and media partners — let's build your global digital future from Singapore.")
     return f'''
   <section class="sec{tint}" id="contact">
     <div class="wrap contact">
@@ -136,8 +136,8 @@ def contact(service_page):
           <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/profile.php?id=61592448591808" target="_blank" rel="noopener noreferrer">Eminent Destino</a></dd></div>
           <div><dt>Telegram</dt><dd><a href="https://t.me/+959674092920" target="_blank" rel="noopener noreferrer">+95 9674092920</a></dd></div>
           <div><dt data-i18n="ft.eminent.h">Eminent</dt><dd data-i18n="ft.eminent">USA (HQ), UAE, Bangladesh</dd></div>
-          <div><dt>Destino</dt><dd data-i18n="ft.destino">Myanmar</dd></div>
-          <div><dt>Eminent Destino</dt><dd data-i18n="ft.edo">Singapore (HQ), Myanmar</dd></div>
+          <div><dt>Destino</dt><dd data-i18n="ft.destino">Singapore</dd></div>
+          <div><dt>Eminent Destino</dt><dd data-i18n="ft.edo">Singapore (HQ)</dd></div>
         </dl>
       </div>
       <form class="form" id="form" novalidate data-reveal style="--d:.12s">
@@ -195,9 +195,9 @@ SITE = "https://www.eminentdestino.com"
 
 def head(title, desc, path, service=None):
     url = SITE + path
-    data = {"@context":"https://schema.org", "@type":"Organization", "name":"Eminent Destino", "alternateName":"EDO", "url":SITE+"/", "logo":SITE+"/assets/logo.jpg", "description":"A Myanmar focused joint venture by Eminent and Destino for creators, artists and labels.", "contactPoint":{"@type":"ContactPoint", "email":"info@eminentdestino.com", "contactType":"customer support", "availableLanguage":["English","Burmese"]}}
+    data = {"@context":"https://schema.org", "@type":"Organization", "name":"Eminent Destino", "alternateName":"EDO", "url":SITE+"/", "logo":SITE+"/assets/logo.jpg", "description":"A Singapore focused joint venture by Eminent and Destino for creators, artists and labels.", "contactPoint":{"@type":"ContactPoint", "email":"info@eminentdestino.com", "contactType":"customer support", "availableLanguage":["English","Burmese"]}}
     if service:
-        data = {"@context":"https://schema.org", "@type":"Service", "name":service["en"]["t"], "description":desc, "url":url, "provider":{"@type":"Organization", "name":"Eminent Destino", "url":SITE+"/"}, "areaServed":{"@type":"Country", "name":"Myanmar"}}
+        data = {"@context":"https://schema.org", "@type":"Service", "name":service["en"]["t"], "description":desc, "url":url, "provider":{"@type":"Organization", "name":"Eminent Destino", "url":SITE+"/"}, "areaServed":{"@type":"Country", "name":"Singapore"}}
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -311,8 +311,8 @@ def home_main():
     <div class="hero__shade"></div>
     <button type="button" class="playbtn" id="playBtn" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-i18n="play.btn">Tap to play video</span></button>
     <div class="wrap hero__inner">
-      <p class="hero__badge" data-in style="--i:0"><i></i><span data-i18n="hero.badge">Empowering Myanmar's Digital Ecosystem</span></p>
-      <h1 data-in style="--i:1"><span data-i18n="hero.l1">Myanmar's creators.</span><span data-i18n="hero.l2">Global reach.</span></h1>
+      <p class="hero__badge" data-in style="--i:0"><i></i><span data-i18n="hero.badge">Empowering Singapore's Digital Ecosystem</span></p>
+      <h1 data-in style="--i:1"><span data-i18n="hero.l1">Singapore's creators.</span><span data-i18n="hero.l2">Global reach.</span></h1>
       <p class="hero__lead" data-in style="--i:2" data-i18n="hero.lead">YouTube and Facebook monetization, music distribution, publishing, copyright protection and more — plus white-label and API services for B2B partners.</p>
       <div class="hero__cta" data-in style="--i:3">
         <a class="btn btn--white" href="#services"><span data-i18n="hero.cta1">Explore services</span>{ARROW}</a>
@@ -327,8 +327,8 @@ def home_main():
     <div class="wrap">
       <div class="about">
         <div data-reveal>
-          <h2 data-i18n="about.title">Two companies. One platform for Myanmar.</h2>
-          <p data-i18n="about.p">In 2026, Eminent and Destino joined forces to create Eminent Destino: a platform built to give Myanmar's creators a better service than the options available today.</p>
+          <h2 data-i18n="about.title">Two companies. One platform for Singapore.</h2>
+          <p data-i18n="about.p">In 2026, Eminent and Destino joined forces to create Eminent Destino: a platform built to give Singapore's creators a better service than the options available today.</p>
           <div class="eq" aria-label="Eminent plus Destino equals EDO"><b>Eminent</b><span>×</span><b>Destino</b><span>=</span><b class="edo">EDO</b></div>
           {art.MAP}
         </div>
@@ -349,8 +349,8 @@ def home_main():
         <article class="ent ent--b" data-reveal style="--d:.1s">
           {art.BADGE_B}
           <h3>Destino</h3>
-          <p data-i18n="ent.b">A Myanmar-based label and music distribution company with strong knowledge of the local market.</p>
-          <ul class="tags"><li data-i18n="loc.mm">Myanmar</li></ul>
+          <p data-i18n="ent.b">A Singapore-based label and music distribution company with strong knowledge of the local market.</p>
+          <ul class="tags"><li data-i18n="loc.mm">Singapore</li></ul>
         </article>
       </div>
     </div>
@@ -379,8 +379,8 @@ def home_main():
   <section class="sec" id="mcn">
     <div class="wrap mcn">
       <div class="mcn__side" data-reveal>
-        <h2 data-i18n="mcn.title">Monetize in Myanmar with EDO.</h2>
-        <p class="lead" data-i18n="mcn.intro">YouTube and Facebook monetization are not directly available for Myanmar accounts. Join EDO's Multi-Channel Network (MCN) and earn through our managed network, with policy guidance and support from a Burmese-speaking team.</p>{PAYOUT_CHIPS}
+        <h2 data-i18n="mcn.title">Monetize in Singapore with EDO.</h2>
+        <p class="lead" data-i18n="mcn.intro">YouTube and Facebook monetization are not directly available for Singapore accounts. Join EDO's Multi-Channel Network (MCN) and earn through our managed network, with policy guidance and support from a Burmese-speaking team.</p>{PAYOUT_CHIPS}
         <a class="btn" href="#contact" data-interest="youtube-mcn"><span data-i18n="mcn.cta">Join the MCN</span>{ARROW}</a>
         {art.STUDIO}
       </div>
@@ -570,7 +570,7 @@ def service_main(i):
 
   <nav class="service-jump wrap" aria-label="Service sections" data-i18n-aria="detail.nav">
     <a href="#service-details" data-i18n="detail.overview">Service overview</a>
-    {'''<a href="#mcn-route" data-i18n="mcn.jump1">Myanmar &amp; MCN</a><a href="#mcn-oo" data-i18n="mcn.jumpoo">O&amp;O model</a><a href="#mcn-payments" data-i18n="mcn.jump2">Payments</a><a href="#mcn-eligibility" data-i18n="mcn.jump3">Eligibility</a>''' if sid == "youtube-mcn" else ""}
+    {'''<a href="#mcn-route" data-i18n="mcn.jump1">Singapore &amp; MCN</a><a href="#mcn-oo" data-i18n="mcn.jumpoo">O&amp;O model</a><a href="#mcn-payments" data-i18n="mcn.jump2">Payments</a><a href="#mcn-eligibility" data-i18n="mcn.jump3">Eligibility</a>''' if sid == "youtube-mcn" else ""}
     <a href="#why-edo" data-i18n="detail.why">Why EDO</a>
     <a href="#how-it-works" data-i18n="sp.how">How it works</a>
     <a href="#questions" data-i18n="detail.faqShort">FAQs</a>
@@ -623,17 +623,17 @@ def write_once(path, text):
     if not os.path.exists(path):
         open(path, "w", encoding="utf-8").write(text)
 
-home_title = "Eminent Destino | Myanmar Creator, Music & B2B Services"
-home_desc = "Myanmar creator services: YouTube and Facebook monetization, music distribution and publishing, copyright protection, VEVO, video production, white-label platforms and API services."
+home_title = "Eminent Destino | Singapore Creator, Music & B2B Services"
+home_desc = "Singapore creator services: YouTube and Facebook monetization, music distribution and publishing, copyright protection, VEVO, video production, white-label platforms and API services."
 open(f"{OUT}/index.html", "w", encoding="utf-8").write(page(home_title, home_desc, "", "home", True, home_main()))
 
 for i, s in enumerate(SERVICES):
     seo = {
-        "youtube-mcn": ("YouTube Monetization in Myanmar | MCN & CMS — Eminent Destino", "Explore YouTube monetization support in Myanmar with Eminent Destino's MCN and CMS: channel review, rights management, Content ID and monthly payments."),
-        "facebook": ("Facebook Monetization in Myanmar | Page Support — Eminent Destino", "Facebook Page management and monetization support for Myanmar creators. Explore eligibility, copyright support and payout coordination with Eminent Destino."),
-        "music-distribution": ("Music Distribution in Myanmar | Eminent Destino", "Distribute music from Myanmar to global streaming platforms with Eminent Destino. Explore release delivery, rights support and royalty reporting for artists and labels."),
+        "youtube-mcn": ("YouTube Monetization in Singapore | MCN & CMS — Eminent Destino", "Explore YouTube monetization support in Singapore with Eminent Destino's MCN and CMS: channel review, rights management, Content ID and monthly payments."),
+        "facebook": ("Facebook Monetization in Singapore | Page Support — Eminent Destino", "Facebook Page management and monetization support for Singapore creators. Explore eligibility, copyright support and payout coordination with Eminent Destino."),
+        "music-distribution": ("Music Distribution in Singapore | Eminent Destino", "Distribute music from Singapore to global streaming platforms with Eminent Destino. Explore release delivery, rights support and royalty reporting for artists and labels."),
     }
-    title, desc = seo.get(s["id"], (f'{s["en"]["t"]} in Myanmar | Eminent Destino', f'{s["en"]["tag"]} {s["en"]["p"][:100]}'))
+    title, desc = seo.get(s["id"], (f'{s["en"]["t"]} in Singapore | Eminent Destino', f'{s["en"]["tag"]} {s["en"]["p"][:100]}'))
     open(f'{OUT}/services/{s["id"]}.html', "w", encoding="utf-8").write(
         page(title, desc, "../", s["id"], False, service_main(i), s))
 
