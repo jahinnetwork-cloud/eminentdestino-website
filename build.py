@@ -184,7 +184,7 @@ FLOW = '''
 PAYOUT_CHIPS = '''
         <div class="chipgroup">
           <h3 data-i18n="mcn.methods">Payout methods</h3>
-          <ul class="chips"><li data-i18n="pay.1">Bank transfer</li><li data-i18n="pay.2">Crypto</li><li>KBZ Pay</li><li>Payoneer</li><li>PayPal</li></ul>
+          <ul class="chips"><li data-i18n="pay.1">Bank transfer</li><li data-i18n="pay.2">PayNow</li><li>GrabPay</li><li>Payoneer</li><li>PayPal</li></ul>
         </div>
         <div class="chipgroup">
           <h3 data-i18n="mcn.currency">Payout currencies</h3>
@@ -273,7 +273,7 @@ MCN_ROWS = [
   '<path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/>'),
  ("Monthly, on-time payments", "You are paid every month, on time, with clear statements that show how your earnings were calculated.",
   '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>'),
- ("Choose your payout method", "Bank transfer, crypto, KBZ Pay, Payoneer or PayPal. Pick whatever works best for you.",
+ ("Choose your payout method", "Bank transfer, PayNow, GrabPay, Payoneer or PayPal. Pick whatever works best for you.",
   '<rect x="3" y="6" width="18" height="12" rx="3"/><circle cx="12" cy="12" r="2.6"/>'),
  ("SGD or USD", "Get paid directly in SGD, or in USD if you prefer. The exchange rate is shown before every payout.",
   '<path d="M7 7h11l-3-3M17 17H6l3 3"/>'),
