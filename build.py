@@ -279,7 +279,7 @@ MCN_ROWS = [
   '<path d="M7 7h11l-3-3M17 17H6l3 3"/>'),
  ("Competitive payout rate", "A competitive revenue share with no hidden EDO fees. Any personal or local taxes remain your responsibility.",
   '<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>'),
- ("Burmese support team", "Talk to a team that speaks Burmese and understands local creators, payments and everyday channel problems.",
+ ("Dedicated support team", "Talk to a team that understands creators, payments and everyday channel problems.",
   '<path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4"/>'),
 ]
 def mcn_rows():
@@ -380,7 +380,7 @@ def home_main():
     <div class="wrap mcn">
       <div class="mcn__side" data-reveal>
         <h2 data-i18n="mcn.title">Monetize in Singapore with EDO.</h2>
-        <p class="lead" data-i18n="mcn.intro">Grow your YouTube and Facebook channels with EDO. Join our Multi-Channel Network (MCN) and earn through our managed network, with policy guidance and support from a Burmese-speaking team.</p>{PAYOUT_CHIPS}
+        <p class="lead" data-i18n="mcn.intro">Grow your YouTube and Facebook channels with EDO. Join our Multi-Channel Network (MCN) and earn through our managed network, with policy guidance and support from a dedicated team.</p>{PAYOUT_CHIPS}
         <a class="btn" href="#contact" data-interest="youtube-mcn"><span data-i18n="mcn.cta">Join the MCN</span>{ARROW}</a>
         {art.STUDIO}
       </div>

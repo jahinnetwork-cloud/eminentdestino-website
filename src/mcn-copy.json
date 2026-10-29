@@ -42,8 +42,8 @@
     "mcn.benefit4p": "Continuous streaming workflows for suitable news and media channels, with setup and monitoring requirements discussed before launch.",
     "mcn.benefit5h": "Rights & Content ID",
     "mcn.benefit5p": "For eligible material with clear exclusive rights, our CMS team can assess Content ID and manage matches. A match may lead to a claim or other permitted action; revenue is not automatic and depends on the rights and policy chosen.",
-    "mcn.benefit6h": "Burmese-speaking support",
-    "mcn.benefit6p": "A local-language team for onboarding, statements, rights questions and channel operations.",
+    "mcn.benefit6h": "Dedicated support",
+    "mcn.benefit6p": "A dedicated team for onboarding, statements, rights questions and channel operations.",
     "mcn.addonsh": "Creative help when you need it",
     "mcn.addonsp": "SEO support, channel artwork and banners, thumbnails and video editing can be scoped separately as reasonably priced add-on services.",
     "mcn.joinh": "Is your channel ready?",
@@ -73,7 +73,7 @@
     "mcn.oo2h": "02 / Network onboarding",
     "mcn.oo2p": "Following approval, we arrange the CMS link and operating access. The channel's network revenue is routed to EDO's AdSense for YouTube account rather than being paid through the creator's previous AdSense payment route for that channel. Timing depends on platform review and setup.",
     "mcn.oo3h": "03 / Ongoing operations",
-    "mcn.oo3p": "Our team handles agreed channel operations, reporting, rights administration and Burmese-language support. Creators can review their statement, understand the 80/20 example where contracted and request a monthly withdrawal in SGD or USD.",
+    "mcn.oo3p": "Our team handles agreed channel operations, reporting, rights administration and dedicated support. Creators can review their statement, understand the 80/20 example where contracted and request a monthly withdrawal in SGD or USD.",
     "mcn.oonote": "An O&O classification requires real exclusive rights and active operation by the partner; a CMS invitation alone does not create those rights. YouTube's eligibility and monetization policies still apply to every channel.",
     "mcn.settleh": "From Studio to your account",
     "mcn.settlep": "YouTube Studio displays estimated earnings while the month is in progress. The final network statement may change because of YouTube adjustments, eligible taxes or rights corrections. The dashboard shows the settled amount and your contracted share. You choose an available local SGD or USD withdrawal method; we show the applicable exchange rate before conversion.",
@@ -82,7 +82,7 @@
     "mcn.benefit7h": "Copyright action and disputes",
     "mcn.benefit7p": "If someone copies your eligible content, we review the evidence and help choose a claim, dispute or takedown route. We also assist with responses to claims made against your channel.",
     "mcn.benefit8h": "Dashboard and statements",
-    "mcn.benefit8p": "Track settled monthly earnings, your contracted revenue share, withdrawals and the available payout method from one place, with Burmese-speaking help when figures need explanation."
+    "mcn.benefit8p": "Track settled monthly earnings, your contracted revenue share, withdrawals and the available payout method from one place, with dedicated help when figures need explanation."
   },
   "my": {
     "mcn.jump1": "မြန်မာနှင့် MCN",
@@ -127,8 +127,8 @@
     "mcn.benefit4p": "သင့်တော်သော သတင်းနှင့် မီဒီယာချန်နယ်များအတွက် ဆက်တိုက် live ထုတ်လွှင့်နိုင်မည့် လုပ်ငန်းစဉ်ကို စီစဉ်ပေးပါသည်။ စတင်မီ setup နှင့် စောင့်ကြည့်ရေးလိုအပ်ချက်များကို ဆွေးနွေးပါမည်။",
     "mcn.benefit5h": "မူပိုင်ခွင့်နှင့် Content ID",
     "mcn.benefit5p": "သီးသန့်အခွင့်အရေးရှင်းလင်းသော အရည်အချင်းပြည့်မီသည့် လက်ရာအတွက် CMS အဖွဲ့က Content ID ကို စစ်ဆေးပြီး match များကို စီမံနိုင်သည်။ Match တွင် claim သို့မဟုတ် ခွင့်ပြုထားသော အခြားဆောင်ရွက်ချက် ရှိနိုင်သည်။ ဝင်ငွေသည် အလိုအလျောက် မဟုတ်ဘဲ အခွင့်အရေးနှင့် ရွေးထားသော မူဝါဒအပေါ် မူတည်သည်။",
-    "mcn.benefit6h": "မြန်မာဘာသာဖြင့် ပံ့ပိုးမှု",
-    "mcn.benefit6p": "စတင်ချိတ်ဆက်မှု၊ ရှင်းတမ်း၊ မူပိုင်ခွင့်မေးခွန်းများနှင့် ချန်နယ်လုပ်ငန်းများအတွက် မြန်မာဘာသာပြော အဖွဲ့ရှိပါသည်။",
+    "mcn.benefit6h": "သီးသန့် ပံ့ပိုးမှု",
+    "mcn.benefit6p": "စတင်ချိတ်ဆက်မှု၊ ရှင်းတမ်း၊ မူပိုင်ခွင့်မေးခွန်းများနှင့် ချန်နယ်လုပ်ငန်းများအတွက် သီးသန့်အဖွဲ့ ရှိပါသည်။",
     "mcn.addonsh": "လိုအပ်သည့်အခါ ဖန်တီးမှုဆိုင်ရာ အကူအညီ",
     "mcn.addonsp": "SEO၊ ချန်နယ် artwork နှင့် banner၊ thumbnail နှင့် video editing တို့ကို သီးခြား add-on ဝန်ဆောင်မှုအဖြစ် သင့်တော်သော စျေးနှုန်းဖြင့် သတ်မှတ်နိုင်ပါသည်။",
     "mcn.joinh": "သင့်ချန်နယ် အဆင်သင့်ဖြစ်ပြီလား။",
@@ -158,7 +158,7 @@
     "mcn.oo2h": "02 / ကွန်ရက်သို့ ချိတ်ဆက်ခြင်း",
     "mcn.oo2p": "အတည်ပြုပြီးနောက် CMS link နှင့် လုပ်ငန်းဆိုင်ရာ ဝင်ရောက်ခွင့်ကို စီစဉ်ပါသည်။ ထိုချန်နယ်၏ ကွန်ရက်ဝင်ငွေသည် ယခင်ဖန်တီးသူ၏ AdSense ငွေပေးချေမှုလမ်းကြောင်းအစား EDO ၏ AdSense for YouTube အကောင့်မှတစ်ဆင့် ရောက်ရှိပါသည်။ အချိန်ကာလသည် ပလက်ဖောင်းစစ်ဆေးမှုနှင့် setup အပေါ် မူတည်သည်။",
     "mcn.oo3h": "03 / ဆက်လက်စီမံခန့်ခွဲမှု",
-    "mcn.oo3p": "ကျွန်ုပ်တို့အဖွဲ့သည် သဘောတူထားသော ချန်နယ်လုပ်ငန်း၊ ရှင်းတမ်း၊ မူပိုင်ခွင့်စီမံမှုနှင့် မြန်မာဘာသာပံ့ပိုးမှုကို ဆောင်ရွက်ပါသည်။ ဖန်တီးသူသည် စာချုပ်အရ 80/20 နမူနာဝေစုကို နားလည်၍ ရှင်းတမ်းကို ကြည့်ပြီး SGD သို့မဟုတ် USD ဖြင့် လစဉ်ငွေထုတ်တောင်းဆိုနိုင်သည်။",
+    "mcn.oo3p": "ကျွန်ုပ်တို့အဖွဲ့သည် သဘောတူထားသော ချန်နယ်လုပ်ငန်း၊ ရှင်းတမ်း၊ မူပိုင်ခွင့်စီမံမှုနှင့် သီးသန့်ပံ့ပိုးမှုကို ဆောင်ရွက်ပါသည်။ ဖန်တီးသူသည် စာချုပ်အရ 80/20 နမူနာဝေစုကို နားလည်၍ ရှင်းတမ်းကို ကြည့်ပြီး SGD သို့မဟုတ် USD ဖြင့် လစဉ်ငွေထုတ်တောင်းဆိုနိုင်သည်။",
     "mcn.oonote": "O&O အမျိုးအစားအတွက် မိတ်ဖက်တွင် အမှန်တကယ် သီးသန့်အခွင့်အရေးနှင့် တက်ကြွသော နေ့စဉ်စီမံခန့်ခွဲမှု ရှိရမည်။ CMS ဖိတ်ကြားချက်တစ်ခုတည်းဖြင့် ထိုအခွင့်အရေးများ မဖြစ်လာပါ။ YouTube ၏ အရည်အချင်းနှင့် monetization မူဝါဒများသည် ချန်နယ်တိုင်းအပေါ် ဆက်လက်သက်ဆိုင်သည်။",
     "mcn.settleh": "Studio မှ သင့်အကောင့်အထိ",
     "mcn.settlep": "YouTube Studio သည် လအတွင်း ခန့်မှန်းဝင်ငွေကို ပြသပါသည်။ YouTube ၏ ပြင်ဆင်မှု၊ သက်ဆိုင်ရာအခွန် သို့မဟုတ် မူပိုင်ခွင့်ပြင်ဆင်မှုကြောင့် နောက်ဆုံးကွန်ရက်ရှင်းတမ်း ကွာခြားနိုင်သည်။ Dashboard တွင် အတည်ပြုပြီးသောပမာဏနှင့် သဘောတူထားသော သင့်ဝေစုကို ဖော်ပြပါသည်။ ရရှိနိုင်သော SGD သို့မဟုတ် USD ငွေထုတ်နည်းလမ်းကို ရွေးနိုင်ပြီး ငွေလဲမီ သက်ဆိုင်ရာနှုန်းထားကို ပြသပါသည်။",
@@ -167,6 +167,6 @@
     "mcn.benefit7h": "မူပိုင်ခွင့်အရေးယူမှုနှင့် dispute",
     "mcn.benefit7p": "သင့်အရည်အချင်းပြည့်မီသော အကြောင်းအရာကို အခြားသူက ကူးယူပါက အထောက်အထားကို စစ်ဆေးပြီး claim၊ dispute သို့မဟုတ် takedown လမ်းကြောင်း ရွေးရန် ကူညီပါသည်။ သင့်ချန်နယ်အပေါ် တင်ထားသော claim များကို ပြန်လည်တုံ့ပြန်ရာတွင်လည်း ကူညီပါသည်။",
     "mcn.benefit8h": "Dashboard နှင့် ရှင်းတမ်း",
-    "mcn.benefit8p": "အတည်ပြုပြီးသော လစဉ်ဝင်ငွေ၊ စာချုပ်ပါ ဝေစု၊ ငွေထုတ်မှုနှင့် ရရှိနိုင်သော ငွေပေးချေမှုနည်းလမ်းများကို တစ်နေရာတည်းတွင် ကြည့်နိုင်ပြီး ပမာဏရှင်းပြရန် လိုအပ်ပါက မြန်မာဘာသာဖြင့် ပံ့ပိုးပါသည်။"
+    "mcn.benefit8p": "အတည်ပြုပြီးသော လစဉ်ဝင်ငွေ၊ စာချုပ်ပါ ဝေစု၊ ငွေထုတ်မှုနှင့် ရရှိနိုင်သော ငွေပေးချေမှုနည်းလမ်းများကို တစ်နေရာတည်းတွင် ကြည့်နိုင်ပြီး ပမာဏရှင်းပြရန် လိုအပ်ပါက ပံ့ပိုးပေးပါသည်။"
   }
 }
