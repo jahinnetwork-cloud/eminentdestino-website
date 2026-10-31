@@ -576,40 +576,46 @@ html[lang="my"] .net__title .ed-grad{order:-1}
 .slider__dots button.on{width:26px;background:var(--orange)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* network cards: dark spotlight style */
-.ncard{position:relative;isolation:isolate;display:flex;flex:1;flex-direction:column;justify-content:space-between;gap:1.3rem;min-width:0;min-height:360px;padding:1.1rem;overflow:hidden;border-radius:32px;background:var(--ink);color:#fff;transition:transform .45s var(--ease),box-shadow .45s}
-a.ncard:hover{transform:translateY(-8px);box-shadow:0 32px 60px -28px rgba(224,78,0,.8)}
-.ncard__bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
-.ncard__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(1.05);transition:transform .8s var(--ease)}
-.ncard__bg img.is-blur{filter:blur(26px) brightness(.58) saturate(1.35);transform:scale(1.5)}
-a.ncard:hover .ncard__bg img:not(.is-blur){transform:scale(1.08)}
-.ncard__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 100% 100%,rgba(255,107,0,.5),transparent 60%),linear-gradient(180deg,rgba(30,22,17,.2) 0%,rgba(30,22,17,.88) 60%,#1E1611 100%)}
-.ncard__top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem}
-.ncard__plat{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .7rem .25rem .3rem;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:600 .7rem var(--f-body)}
-.ncard__plat svg{width:22px;height:22px;padding:4px;border-radius:50%;background:var(--orange);fill:#fff}
-.ncard__ed{display:inline-flex;align-items:center;gap:.4rem;padding:.33rem .65rem;border-radius:999px;background:#fff;color:var(--ink);font:700 .6rem var(--f-mono);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+/* network cards: framed profile cards, banner shown as the channel's own */
+.net{position:relative;overflow:hidden;isolation:isolate}
+.net::before,.net::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
+.net::before{top:-120px;right:-140px;width:420px;height:420px;background:radial-gradient(circle,rgba(255,107,0,.18),transparent 68%)}
+.net::after{bottom:-160px;left:-120px;width:460px;height:460px;background:radial-gradient(circle,rgba(255,138,43,.16),transparent 68%)}
+.ncard{position:relative;display:flex;flex:1;flex-direction:column;align-items:center;min-width:0;padding:.6rem .6rem 1.1rem;text-align:center;background:linear-gradient(180deg,#fff 0%,#fff 55%,var(--orange-tint) 100%);border:1px solid var(--orange-soft);border-radius:32px;box-shadow:0 22px 40px -30px rgba(224,78,0,.55);transition:transform .45s var(--ease),box-shadow .45s,border-color .3s}
+a.ncard:hover{transform:translateY(-8px);border-color:var(--orange);box-shadow:0 34px 56px -28px rgba(255,107,0,.7)}
+.ncard__banner{position:relative;align-self:stretch;aspect-ratio:1.9/1;overflow:hidden;border-radius:24px;background:linear-gradient(135deg,#FF8A2B,#E04E00 62%,#B93A00)}
+.ncard__banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .8s var(--ease)}
+.ncard__banner img.is-blur{filter:blur(22px) saturate(1.3);transform:scale(1.6)}
+a.ncard:hover .ncard__banner img:not(.is-blur){transform:scale(1.06)}
+.ncard__ed{position:absolute;left:.6rem;top:.6rem;display:inline-flex;align-items:center;gap:.4rem;padding:.32rem .65rem;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);font:700 .6rem var(--f-mono);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;box-shadow:0 6px 16px -8px rgba(0,0,0,.55)}
 .ncard__ed i{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:edPing 2s infinite}
 @keyframes edPing{0%{box-shadow:0 0 0 0 rgba(255,107,0,.6)}70%,100%{box-shadow:0 0 0 7px rgba(255,107,0,0)}}
-.ncard__mid{margin-top:auto;min-width:0}
-.ncard__avatar{display:block;width:88px;height:88px;overflow:hidden;border-radius:28px;border:3px solid var(--orange);background:var(--orange-tint);box-shadow:0 0 0 5px rgba(255,107,0,.25),0 18px 30px -14px rgba(0,0,0,.7);transform:rotate(-4deg);transition:transform .5s var(--ease)}
-a.ncard:hover .ncard__avatar{transform:rotate(0) scale(1.06)}
+.ncard__plat{position:absolute;right:.6rem;top:.6rem;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;box-shadow:0 6px 16px -8px rgba(0,0,0,.55)}
+.ncard__plat svg{width:16px;height:16px;fill:currentColor}
+.ncard__avatar{position:relative;z-index:1;display:block;width:88px;height:88px;margin-top:-40px;overflow:hidden;border-radius:50%;border:4px solid #fff;background:var(--orange-tint);box-shadow:0 0 0 3px var(--orange),0 16px 28px -12px rgba(60,15,0,.6);transition:transform .5s var(--ease)}
+a.ncard:hover .ncard__avatar{transform:scale(1.07) rotate(-3deg)}
 .ncard__avatar img{display:block;width:100%;height:100%;object-fit:cover}
-.ncard h3{margin-top:1rem;font-size:clamp(1.35rem,2vw,1.65rem);line-height:1.1;color:#fff;overflow-wrap:anywhere}
-.ncard__handle{margin-top:.35rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:.76rem var(--f-mono);color:rgba(255,255,255,.65)}
-.ncard__bot{display:flex;align-items:flex-end;justify-content:space-between;gap:.8rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.18)}
-.ncard__stat b{display:block;font:800 clamp(2rem,3vw,2.6rem)/1 var(--f-display);letter-spacing:-.04em;background:linear-gradient(100deg,#FFB46B,var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
-.ncard__stat span{display:block;margin-top:.35rem;font:600 .66rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-.ncard__go{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:.8rem;color:#fff;text-align:right}
-.ncard__go i{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:var(--orange);transition:transform .4s var(--ease),background .3s}
-.ncard__go svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
-a.ncard:hover .ncard__go i{transform:rotate(45deg);background:#fff}
-a.ncard:hover .ncard__go svg{stroke:var(--orange-deep)}
-.ncard--more{align-items:center;justify-content:center;gap:1rem;text-align:center;background:#fff;color:var(--ink);border:2px dashed var(--orange)}
-.ncard--more .plus{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--orange);color:#fff;font:800 3rem/1 var(--f-display);box-shadow:0 0 0 10px var(--orange-soft);animation:float 4.6s ease-in-out infinite alternate;--r:0deg}
-.ncard--more h3{margin:0;color:var(--ink);font-size:1.25rem}
+.ncard h3{margin-top:.9rem;padding-inline:.8rem;font-size:clamp(1.25rem,1.8vw,1.5rem);line-height:1.1;overflow-wrap:anywhere}
+.ncard__handle{max-width:100%;padding-inline:.8rem;margin-top:.3rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:.76rem var(--f-mono);color:var(--muted)}
+.ncard__stat{display:inline-flex;align-items:baseline;gap:.5rem;margin-top:1rem;padding:.55rem 1.2rem;border-radius:18px;background:#fff;border:1px solid var(--orange-soft);box-shadow:0 10px 22px -16px rgba(224,78,0,.6)}
+.ncard__stat b{font:800 clamp(1.7rem,2.4vw,2.1rem)/1 var(--f-display);letter-spacing:-.04em;background:linear-gradient(100deg,var(--orange),var(--orange-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ncard__stat span{font:600 .66rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ncard__cta{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;align-self:stretch;margin:1.1rem .6rem 0;padding:.35rem .35rem .35rem 1.2rem;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:.86rem;transition:background .3s}
+.ncard__cta>span{flex:1;text-align:center}
+.ncard__cta i{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:var(--orange);transition:transform .4s var(--ease)}
+.ncard__cta svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+a.ncard:hover .ncard__cta{background:var(--orange)}
+a.ncard:hover .ncard__cta i{background:#fff;transform:rotate(45deg)}
+a.ncard:hover .ncard__cta svg{stroke:var(--orange-deep)}
+.ncard--more{position:relative;overflow:hidden;align-items:center;justify-content:center;gap:.9rem;padding:1.5rem;color:#fff;background:linear-gradient(135deg,#FF8A2B,#E04E00 60%,#B93A00);border-color:transparent;box-shadow:0 26px 50px -28px rgba(224,78,0,.8)}
+.ncard--more .ring{position:absolute;right:-50px;top:-50px;width:190px;height:190px;border-radius:50%;border:1px solid rgba(255,255,255,.35);animation:spin 18s linear infinite}
+.ncard--more .ring::after{content:"";position:absolute;inset:20px;border-radius:50%;border:1px dashed rgba(255,255,255,.4)}
+.ncard__big svg{width:34px;height:34px;fill:rgba(255,255,255,.9)}
+.ncard--more .plus{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#fff;color:var(--orange-deep);font:800 3rem/1 var(--f-display);box-shadow:0 0 0 10px rgba(255,255,255,.22);animation:float 4.6s ease-in-out infinite alternate;--r:0deg}
+.ncard--more h3{margin:0;color:#fff;font-size:1.25rem}
 html[lang="my"] .ncard__stat span,html[lang="my"] .ncard__ed{letter-spacing:0}
-@media (max-width:420px){.ncard{min-height:340px}.ncard__go>span{display:none}}
-@media (prefers-reduced-motion:reduce){.ncard__ed i,.ncard--more .plus{animation:none}}
+@media (max-width:420px){.ncard__avatar{width:80px;height:80px;margin-top:-36px}}
+@media (prefers-reduced-motion:reduce){.ncard__ed i,.ncard--more .plus,.ncard--more .ring{animation:none}}
 
 ol{margin:0;padding:0;list-style:none}
 .sp-hero::after{background:var(--orange-tint)}
@@ -673,6 +679,100 @@ ol{margin:0;padding:0;list-style:none}
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee__track"><div class="marquee__item" data-s="youtube-mcn|t">YouTube MCN / CMS</div><div class="marquee__item" data-s="music-distribution|t">Music Distribution</div><div class="marquee__item" data-s="music-publishing|t">Music Publishing</div><div class="marquee__item" data-s="vevo|t">VEVO Video Distribution</div><div class="marquee__item" data-s="facebook|t">Facebook Page Management</div><div class="marquee__item" data-s="white-label|t">White Label Services</div><div class="marquee__item" data-s="api|t">API Services</div><div class="marquee__item" data-s="copyright|t">Copyright Protection</div><div class="marquee__item" data-s="video-production|t">Music Video Production</div><div class="marquee__item" data-s="youtube-mcn|t">YouTube MCN / CMS</div><div class="marquee__item" data-s="music-distribution|t">Music Distribution</div><div class="marquee__item" data-s="music-publishing|t">Music Publishing</div><div class="marquee__item" data-s="vevo|t">VEVO Video Distribution</div><div class="marquee__item" data-s="facebook|t">Facebook Page Management</div><div class="marquee__item" data-s="white-label|t">White Label Services</div><div class="marquee__item" data-s="api|t">API Services</div><div class="marquee__item" data-s="copyright|t">Copyright Protection</div><div class="marquee__item" data-s="video-production|t">Music Video Production</div></div></div>
+
+  <section class="sec sec--tint net" id="network">
+    <div class="net__stack">
+      <div class="slider" data-slider data-dir="1" data-reveal>
+        <div class="wrap slider__head">
+          <div>
+            <p class="net__eyebrow"><span class="net__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></span><span data-i18n="net.eyebrow">Our network</span></p>
+            <h2 class="net__title"><span data-i18n="net.yt.a">YouTube Channels</span> <span class="ed-grad" data-i18n="net.we">We Manage</span></h2>
+          </div>
+          <div class="slider__arrows">
+            <button type="button" data-step="-1" aria-label="Previous" data-i18n-aria="net.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button type="button" data-step="1" aria-label="Next" data-i18n-aria="net.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="slider__track" tabindex="0">
+          <div class="slide"><a class="ncard" href="https://www.youtube.com/channel/UCY27TbDPX29x_svRtlGEIqg" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner"><img class="is-blur" src="assets/channels/cherry-thin-avatar.jpg" alt="" loading="lazy"><span class="ncard__ed"><i></i>Eminent Destino</span><span class="ncard__plat" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></span></div>
+            <span class="ncard__avatar"><img src="assets/channels/cherry-thin-avatar.jpg" alt="Cherry Thin" loading="lazy" width="96" height="96"></span>
+            <h3>Cherry Thin</h3>
+            <p class="ncard__handle" dir="ltr">@CherryThin</p>
+            <div class="ncard__stat"><b>347K</b><span data-i18n="net.subs">subs</span></div>
+            <span class="ncard__cta"><span data-i18n="net.visit.ch">Visit channel</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+          </a></div>
+          <div class="slide"><a class="ncard" href="https://www.youtube.com/channel/UC2x7MYBDL9kMxvNu5d-Lslw" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner"><img src="assets/channels/yadanar-my-banner.jpg" alt="" loading="lazy"><span class="ncard__ed"><i></i>Eminent Destino</span><span class="ncard__plat" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></span></div>
+            <span class="ncard__avatar"><img src="assets/channels/yadanar-my-avatar.jpg" alt="Yadanar My" loading="lazy" width="96" height="96"></span>
+            <h3>Yadanar My</h3>
+            <p class="ncard__handle" dir="ltr">@YadanarMy</p>
+            <div class="ncard__stat"><b>197K</b><span data-i18n="net.subs">subs</span></div>
+            <span class="ncard__cta"><span data-i18n="net.visit.ch">Visit channel</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+          </a></div>
+          <div class="slide"><a class="ncard" href="https://www.youtube.com/channel/UCIgJyRyiZfO0NHQImuGPf9g" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner"><img src="assets/channels/minn-khant-banner.jpg" alt="" loading="lazy"><span class="ncard__ed"><i></i>Eminent Destino</span><span class="ncard__plat" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></span></div>
+            <span class="ncard__avatar"><img src="assets/channels/minn-khant-avatar.jpg" alt="Minn Khant" loading="lazy" width="96" height="96"></span>
+            <h3>Minn Khant</h3>
+            <p class="ncard__handle" dir="ltr">@minnkhant6219</p>
+            <div class="ncard__stat"><b>191K</b><span data-i18n="net.subs">subs</span></div>
+            <span class="ncard__cta"><span data-i18n="net.visit.ch">Visit channel</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+          </a></div>
+          <div class="slide"><div class="ncard ncard--more"><i class="ring" aria-hidden="true"></i><span class="ncard__big" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></span><span class="plus" aria-hidden="true">+</span><h3 data-i18n="net.more.ch">&amp; Many Other Channels</h3></div></div>
+        </div>
+        <div class="slider__dots" aria-hidden="true"></div>
+      </div>
+      <div class="slider" data-slider data-dir="-1" data-reveal>
+        <div class="wrap slider__head">
+          <div>
+            <p class="net__eyebrow"><span class="net__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg></span><span data-i18n="net.eyebrow">Our network</span></p>
+            <h2 class="net__title"><span data-i18n="net.fb.a">Facebook Pages</span> <span class="ed-grad" data-i18n="net.we">We Manage</span></h2>
+          </div>
+          <div class="slider__arrows">
+            <button type="button" data-step="-1" aria-label="Previous" data-i18n-aria="net.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button type="button" data-step="1" aria-label="Next" data-i18n-aria="net.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="slider__track" tabindex="0">
+          <div class="slide"><a class="ncard" href="https://www.facebook.com/MediaQueenTV.Official" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner"><img src="assets/channels/media-queen-tv-banner.jpg" alt="" loading="lazy"><span class="ncard__ed"><i></i>Eminent Destino</span><span class="ncard__plat" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg></span></div>
+            <span class="ncard__avatar"><img src="assets/channels/media-queen-tv-avatar.jpg" alt="Media Queen TV" loading="lazy" width="96" height="96"></span>
+            <h3>Media Queen TV</h3>
+            <p class="ncard__handle" dir="ltr">@MediaQueenTV.Official</p>
+            <div class="ncard__stat"><b>3.3M</b><span data-i18n="net.followers">followers</span></div>
+            <span class="ncard__cta"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+          </a></div>
+          <div class="slide"><a class="ncard" href="https://www.facebook.com/mediaqueenmyanmar" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner"><img src="assets/channels/media-queen-banner.jpg" alt="" loading="lazy"><span class="ncard__ed"><i></i>Eminent Destino</span><span class="ncard__plat" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg></span></div>
+            <span class="ncard__avatar"><img src="assets/channels/media-queen-avatar.jpg" alt="Media Queen" loading="lazy" width="96" height="96"></span>
+            <h3>Media Queen</h3>
+            <p class="ncard__handle" dir="ltr">@mediaqueenmyanmar</p>
+            <div class="ncard__stat"><b>2.4M</b><span data-i18n="net.followers">followers</span></div>
+            <span class="ncard__cta"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+          </a></div>
+          <div class="slide"><a class="ncard" href="https://www.facebook.com/LiveMedaiEntertainments" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner"><img src="assets/channels/live-media-banner.jpg" alt="" loading="lazy"><span class="ncard__ed"><i></i>Eminent Destino</span><span class="ncard__plat" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg></span></div>
+            <span class="ncard__avatar"><img src="assets/channels/live-media-avatar.jpg" alt="Live Media" loading="lazy" width="96" height="96"></span>
+            <h3>Live Media</h3>
+            <p class="ncard__handle" dir="ltr">@LiveMedaiEntertainments</p>
+            <div class="ncard__stat"><b>970K</b><span data-i18n="net.followers">followers</span></div>
+            <span class="ncard__cta"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+          </a></div>
+          <div class="slide"><a class="ncard" href="https://www.facebook.com/emeraldchanvlog" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner"><img src="assets/channels/charm-media-banner.jpg" alt="" loading="lazy"><span class="ncard__ed"><i></i>Eminent Destino</span><span class="ncard__plat" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg></span></div>
+            <span class="ncard__avatar"><img src="assets/channels/charm-media-avatar.jpg" alt="Charm Media" loading="lazy" width="96" height="96"></span>
+            <h3>Charm Media</h3>
+            <p class="ncard__handle" dir="ltr">@emeraldchanvlog</p>
+            <div class="ncard__stat"><b>1.7M</b><span data-i18n="net.followers">followers</span></div>
+            <span class="ncard__cta"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
+          </a></div>
+          <div class="slide"><div class="ncard ncard--more"><i class="ring" aria-hidden="true"></i><span class="ncard__big" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg></span><span class="plus" aria-hidden="true">+</span><h3 data-i18n="net.more.pg">&amp; Many Other Pages</h3></div></div>
+        </div>
+        <div class="slider__dots" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
 
   <section class="sec" id="about">
     <div class="wrap">
@@ -908,135 +1008,6 @@ ol{margin:0;padding:0;list-style:none}
           <div><h3 data-i18n="mcn.7t">Dedicated support team</h3><p data-i18n="mcn.7d">Talk to a team that understands creators, payments and everyday channel problems.</p></div>
         </li>
       </ul>
-    </div>
-  </section>
-
-
-  <section class="sec sec--tint net" id="network">
-    <div class="net__stack">
-      <div class="slider" data-slider data-dir="1" data-reveal>
-        <div class="wrap slider__head">
-          <div>
-            <p class="net__eyebrow"><span class="net__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg></span><span data-i18n="net.eyebrow">Our network</span></p>
-            <h2 class="net__title"><span data-i18n="net.yt.a">YouTube Channels</span> <span class="ed-grad" data-i18n="net.we">We Manage</span></h2>
-          </div>
-          <div class="slider__arrows">
-            <button type="button" data-step="-1" aria-label="Previous" data-i18n-aria="net.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-            <button type="button" data-step="1" aria-label="Next" data-i18n-aria="net.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
-        <div class="slider__track" tabindex="0">
-          <div class="slide"><a class="ncard" href="https://www.youtube.com/channel/UCY27TbDPX29x_svRtlGEIqg" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__bg" aria-hidden="true"><img class="is-blur" src="assets/channels/cherry-thin-avatar.jpg" alt="" loading="lazy"></div>
-            <div class="ncard__top"><span class="ncard__plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg>YouTube</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
-            <div class="ncard__mid">
-              <span class="ncard__avatar"><img src="assets/channels/cherry-thin-avatar.jpg" alt="Cherry Thin" loading="lazy" width="88" height="88"></span>
-              <h3>Cherry Thin</h3>
-              <p class="ncard__handle" dir="ltr">@CherryThin</p>
-            </div>
-            <div class="ncard__bot">
-              <div class="ncard__stat"><b>347K</b><span data-i18n="net.subs">subs</span></div>
-              <span class="ncard__go"><span data-i18n="net.visit.ch">Visit channel</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
-            </div>
-          </a></div>
-          <div class="slide"><a class="ncard" href="https://www.youtube.com/channel/UC2x7MYBDL9kMxvNu5d-Lslw" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__bg" aria-hidden="true"><img src="assets/channels/yadanar-my-banner.jpg" alt="" loading="lazy"></div>
-            <div class="ncard__top"><span class="ncard__plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg>YouTube</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
-            <div class="ncard__mid">
-              <span class="ncard__avatar"><img src="assets/channels/yadanar-my-avatar.jpg" alt="Yadanar My" loading="lazy" width="88" height="88"></span>
-              <h3>Yadanar My</h3>
-              <p class="ncard__handle" dir="ltr">@YadanarMy</p>
-            </div>
-            <div class="ncard__bot">
-              <div class="ncard__stat"><b>197K</b><span data-i18n="net.subs">subs</span></div>
-              <span class="ncard__go"><span data-i18n="net.visit.ch">Visit channel</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
-            </div>
-          </a></div>
-          <div class="slide"><a class="ncard" href="https://www.youtube.com/channel/UCIgJyRyiZfO0NHQImuGPf9g" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__bg" aria-hidden="true"><img src="assets/channels/minn-khant-banner.jpg" alt="" loading="lazy"></div>
-            <div class="ncard__top"><span class="ncard__plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg>YouTube</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
-            <div class="ncard__mid">
-              <span class="ncard__avatar"><img src="assets/channels/minn-khant-avatar.jpg" alt="Minn Khant" loading="lazy" width="88" height="88"></span>
-              <h3>Minn Khant</h3>
-              <p class="ncard__handle" dir="ltr">@minnkhant6219</p>
-            </div>
-            <div class="ncard__bot">
-              <div class="ncard__stat"><b>191K</b><span data-i18n="net.subs">subs</span></div>
-              <span class="ncard__go"><span data-i18n="net.visit.ch">Visit channel</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
-            </div>
-          </a></div>
-          <div class="slide"><div class="ncard ncard--more"><span class="plus" aria-hidden="true">+</span><h3 data-i18n="net.more.ch">&amp; Many Other Channels</h3></div></div>
-        </div>
-        <div class="slider__dots" aria-hidden="true"></div>
-      </div>
-      <div class="slider" data-slider data-dir="-1" data-reveal>
-        <div class="wrap slider__head">
-          <div>
-            <p class="net__eyebrow"><span class="net__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg></span><span data-i18n="net.eyebrow">Our network</span></p>
-            <h2 class="net__title"><span data-i18n="net.fb.a">Facebook Pages</span> <span class="ed-grad" data-i18n="net.we">We Manage</span></h2>
-          </div>
-          <div class="slider__arrows">
-            <button type="button" data-step="-1" aria-label="Previous" data-i18n-aria="net.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-            <button type="button" data-step="1" aria-label="Next" data-i18n-aria="net.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
-        <div class="slider__track" tabindex="0">
-          <div class="slide"><a class="ncard" href="https://www.facebook.com/MediaQueenTV.Official" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__bg" aria-hidden="true"><img src="assets/channels/media-queen-tv-banner.jpg" alt="" loading="lazy"></div>
-            <div class="ncard__top"><span class="ncard__plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg>Facebook</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
-            <div class="ncard__mid">
-              <span class="ncard__avatar"><img src="assets/channels/media-queen-tv-avatar.jpg" alt="Media Queen TV" loading="lazy" width="88" height="88"></span>
-              <h3>Media Queen TV</h3>
-              <p class="ncard__handle" dir="ltr">@MediaQueenTV.Official</p>
-            </div>
-            <div class="ncard__bot">
-              <div class="ncard__stat"><b>3.3M</b><span data-i18n="net.followers">followers</span></div>
-              <span class="ncard__go"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
-            </div>
-          </a></div>
-          <div class="slide"><a class="ncard" href="https://www.facebook.com/mediaqueenmyanmar" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__bg" aria-hidden="true"><img src="assets/channels/media-queen-banner.jpg" alt="" loading="lazy"></div>
-            <div class="ncard__top"><span class="ncard__plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg>Facebook</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
-            <div class="ncard__mid">
-              <span class="ncard__avatar"><img src="assets/channels/media-queen-avatar.jpg" alt="Media Queen" loading="lazy" width="88" height="88"></span>
-              <h3>Media Queen</h3>
-              <p class="ncard__handle" dir="ltr">@mediaqueenmyanmar</p>
-            </div>
-            <div class="ncard__bot">
-              <div class="ncard__stat"><b>2.4M</b><span data-i18n="net.followers">followers</span></div>
-              <span class="ncard__go"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
-            </div>
-          </a></div>
-          <div class="slide"><a class="ncard" href="https://www.facebook.com/LiveMedaiEntertainments" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__bg" aria-hidden="true"><img src="assets/channels/live-media-banner.jpg" alt="" loading="lazy"></div>
-            <div class="ncard__top"><span class="ncard__plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg>Facebook</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
-            <div class="ncard__mid">
-              <span class="ncard__avatar"><img src="assets/channels/live-media-avatar.jpg" alt="Live Media" loading="lazy" width="88" height="88"></span>
-              <h3>Live Media</h3>
-              <p class="ncard__handle" dir="ltr">@LiveMedaiEntertainments</p>
-            </div>
-            <div class="ncard__bot">
-              <div class="ncard__stat"><b>970K</b><span data-i18n="net.followers">followers</span></div>
-              <span class="ncard__go"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
-            </div>
-          </a></div>
-          <div class="slide"><a class="ncard" href="https://www.facebook.com/emeraldchanvlog" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__bg" aria-hidden="true"><img src="assets/channels/charm-media-banner.jpg" alt="" loading="lazy"></div>
-            <div class="ncard__top"><span class="ncard__plat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg>Facebook</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
-            <div class="ncard__mid">
-              <span class="ncard__avatar"><img src="assets/channels/charm-media-avatar.jpg" alt="Charm Media" loading="lazy" width="88" height="88"></span>
-              <h3>Charm Media</h3>
-              <p class="ncard__handle" dir="ltr">@emeraldchanvlog</p>
-            </div>
-            <div class="ncard__bot">
-              <div class="ncard__stat"><b>1.7M</b><span data-i18n="net.followers">followers</span></div>
-              <span class="ncard__go"><span data-i18n="net.visit.pg">Visit page</span><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></span>
-            </div>
-          </a></div>
-          <div class="slide"><div class="ncard ncard--more"><span class="plus" aria-hidden="true">+</span><h3 data-i18n="net.more.pg">&amp; Many Other Pages</h3></div></div>
-        </div>
-        <div class="slider__dots" aria-hidden="true"></div>
-      </div>
     </div>
   </section>
 
