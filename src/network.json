@@ -1,0 +1,13 @@
+{
+  "youtube": [
+    {"name": "Cherry Thin",  "handle": "@CherryThin",     "followers": "347K", "url": "https://www.youtube.com/channel/UCY27TbDPX29x_svRtlGEIqg", "slug": "cherry-thin", "banner": false},
+    {"name": "Yadanar My",   "handle": "@YadanarMy",      "followers": "197K", "url": "https://www.youtube.com/channel/UC2x7MYBDL9kMxvNu5d-Lslw", "slug": "yadanar-my",  "banner": true},
+    {"name": "Minn Khant",   "handle": "@minnkhant6219",  "followers": "191K", "url": "https://www.youtube.com/channel/UCIgJyRyiZfO0NHQImuGPf9g", "slug": "minn-khant",  "banner": true}
+  ],
+  "facebook": [
+    {"name": "Media Queen TV", "handle": "@MediaQueenTV.Official",    "followers": "3.3M", "url": "https://www.facebook.com/MediaQueenTV.Official",    "slug": "media-queen-tv", "banner": true},
+    {"name": "Media Queen",    "handle": "@mediaqueenmyanmar",        "followers": "2.4M", "url": "https://www.facebook.com/mediaqueenmyanmar",        "slug": "media-queen",    "banner": true},
+    {"name": "Live Media",     "handle": "@LiveMedaiEntertainments",  "followers": "970K", "url": "https://www.facebook.com/LiveMedaiEntertainments",  "slug": "live-media",     "banner": true},
+    {"name": "Charm Media",    "handle": "@emeraldchanvlog",          "followers": "1.7M", "url": "https://www.facebook.com/emeraldchanvlog",          "slug": "charm-media",    "banner": true}
+  ]
+}

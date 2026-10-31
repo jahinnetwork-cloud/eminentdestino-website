@@ -262,6 +262,60 @@ def tiles():
         </a>''')
     return "".join(out)
 
+NETWORK = json.load(open(f"{SRC}/network.json", encoding="utf-8"))
+YT_G = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg>'
+FB_G = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.2-.1-2.2-.1-2.4 0-4 1.4-4 4.1v2.4H7.9V13h2.7v8z"/></svg>'
+ARROW_UR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>'
+ARROW_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>'
+
+def net_slider(kind, reverse):
+    yt = kind == "youtube"
+    glyph = YT_G if yt else FB_G
+    unit_key, unit = ("net.subs", "subs") if yt else ("net.followers", "followers")
+    visit_key, visit = ("net.visit.ch", "Visit channel") if yt else ("net.visit.pg", "Visit page")
+    cards = []
+    for c in NETWORK[kind]:
+        banner = f'<img src="assets/channels/{c["slug"]}-banner.jpg" alt="" loading="lazy">' if c["banner"] else ""
+        cards.append(f'''
+          <div class="slide"><a class="ncard" href="{c["url"]}" target="_blank" rel="noopener noreferrer">
+            <div class="ncard__banner">{banner}<span class="ncard__badge">{glyph}</span></div>
+            <div class="ncard__body">
+              <span class="ncard__avatar"><img src="assets/channels/{c["slug"]}-avatar.jpg" alt="{esc(c["name"])}" loading="lazy" width="80" height="80"></span>
+              <h3>{esc(c["name"])}</h3>
+              <p class="ncard__handle" dir="ltr">{esc(c["handle"])}</p>
+              <div class="ncard__chips"><span class="chip"><b>{c["followers"]}</b> <span data-i18n="{unit_key}">{unit}</span></span><span class="chip chip--ed">Eminent Destino</span></div>
+              <span class="ncard__go"><span data-i18n="{visit_key}">{visit}</span>{ARROW_UR}</span>
+            </div>
+          </a></div>''')
+    more_key, more = ("net.more.ch", "&amp; Many Other Channels") if yt else ("net.more.pg", "&amp; Many Other Pages")
+    cards.append(f'''
+          <div class="slide"><div class="ncard ncard--more"><i class="ring" aria-hidden="true"></i><span class="ncard__big">{glyph}</span><b class="plus">+</b><h3 data-i18n="{more_key}">{more}</h3></div></div>''')
+    a = ("net.yt.a", "YouTube Channels") if yt else ("net.fb.a", "Facebook Pages")
+    return f'''
+      <div class="slider" data-slider data-dir="{-1 if reverse else 1}" data-reveal>
+        <div class="wrap slider__head">
+          <div>
+            <p class="net__eyebrow"><span class="net__ico">{glyph}</span><span data-i18n="net.eyebrow">Our network</span></p>
+            <h2 class="net__title"><span data-i18n="{a[0]}">{a[1]}</span> <span class="ed-grad" data-i18n="net.we">We Manage</span></h2>
+          </div>
+          <div class="slider__arrows">
+            <button type="button" data-step="-1" aria-label="Previous" data-i18n-aria="net.prev">{ARROW_L}</button>
+            <button type="button" data-step="1" aria-label="Next" data-i18n-aria="net.next">{ARROW}</button>
+          </div>
+        </div>
+        <div class="slider__track" tabindex="0">{"".join(cards)}
+        </div>
+        <div class="slider__dots" aria-hidden="true"></div>
+      </div>'''
+
+def network():
+    return f'''
+  <section class="sec sec--tint net" id="network">
+    <div class="net__stack">{net_slider("youtube", False)}{net_slider("facebook", True)}
+    </div>
+  </section>
+'''
+
 def marquee():
     items = "".join(f'<div class="marquee__item" data-s="{s["id"]}|t">{esc(s["en"]["t"])}</div>' for s in SERVICES)
     return items + items
@@ -389,6 +443,7 @@ def home_main():
     </div>
   </section>
 
+{network()}
   <section class="sec wl" id="partners">
     <div class="wrap">
       <div class="wl__grid">

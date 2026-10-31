@@ -77,6 +77,7 @@ const MY = {
 "ft.line":"Eminent နှင့် Destino တို့၏ ဖက်စပ်လုပ်ငန်း။ စင်ကာပူ၏ဒစ်ဂျစ်တယ်ဖန်တီးသူများအတွက် ဖန်တီးထားသည်။",
 "ft.services":"ဝန်ဆောင်မှုများ","ft.offices":"ရုံးများ","ft.contact":"ဆက်သွယ်ရန်","ft.eminent.h":"Eminent",
 "ft.eminent":"အမေရိကန် (ဌာနချုပ်)၊ ယူအေအီး၊ ဘင်္ဂလားဒေ့ရှ်","ft.destino":"စင်ကာပူ","ft.edo":"စင်ကာပူ (ဌာနချုပ်)","soon":"လင့်ခ်ကို မကြာမီ ထည့်သွင်းမည်","ft.top":"အပေါ်သို့ ပြန်သွားရန်",
+"net.eyebrow":"ကျွန်ုပ်တို့၏ ကွန်ရက်","net.yt.a":"YouTube ချန်နယ်များ","net.fb.a":"Facebook စာမျက်နှာများ","net.we":"ကျွန်ုပ်တို့ စီမံခန့်ခွဲသော","net.subs":"subscribers","net.followers":"followers","net.visit.ch":"ချန်နယ်သို့ သွားရန်","net.visit.pg":"စာမျက်နှာသို့ သွားရန်","net.more.ch":"& အခြား ချန်နယ်များစွာ","net.more.pg":"& အခြား စာမျက်နှာများစွာ","net.prev":"ယခင်","net.next":"နောက်",
 "crumb.home":"ပင်မစာမျက်နှာ","crumb.services":"ဝန်ဆောင်မှုများ",
 "sp.for":"မည်သူများအတွက်လဲ","sp.inc":"ပါဝင်သည်များ","sp.how":"အလုပ်လုပ်ပုံ","sp.start":"စတင်ရန်","sp.email":"အီးမေးလ်ပို့ရန်",
 "sp.prev":"ယခင်ဝန်ဆောင်မှု","sp.next":"နောက်ဝန်ဆောင်မှု","sp.more":"အခြားဝန်ဆောင်မှုများ","sp.all":"ဝန်ဆောင်မှုအားလုံး ကြည့်ရန်",
@@ -263,6 +264,31 @@ const co=new IntersectionObserver(es=>es.forEach(e=>{
   (function step(now){ const k=Math.min(1,(now-t0)/1200); e.target.textContent=String(Math.round(end*(1-Math.pow(1-k,3)))).padStart(2,"0"); if(k<1) requestAnimationFrame(step); })(t0);
 }),{threshold:.6});
 $$("[data-count]").forEach(el=>co.observe(el));
+
+/* =====================================================================
+   NETWORK SLIDERS (YouTube channels / Facebook pages we manage)
+   ===================================================================== */
+$$("[data-slider]").forEach(sl=>{
+  const track=$(".slider__track",sl), dots=$(".slider__dots",sl), slides=$$(".slide",track), dir=+sl.dataset.dir||1;
+  let paused=false, visible=false;
+  const w=()=>{ const f=slides[0]; return f?f.offsetWidth+16:0; };
+  slides.forEach((_,i)=>{ const b=document.createElement("button"); b.type="button"; b.tabIndex=-1; b.addEventListener("click",()=>track.scrollTo({left:i*w(),behavior:"smooth"})); dots.appendChild(b); });
+  const mark=()=>{ const i=Math.min(slides.length-1,Math.round(track.scrollLeft/(w()||1))); $$("button",dots).forEach((b,k)=>b.classList.toggle("on",k===i)); };
+  const step=d=>{
+    const max=track.scrollWidth-track.clientWidth-4;
+    if(d>0&&track.scrollLeft>=max) track.scrollTo({left:0,behavior:"smooth"});
+    else if(d<0&&track.scrollLeft<=4) track.scrollTo({left:track.scrollWidth,behavior:"smooth"});
+    else track.scrollBy({left:d*w(),behavior:"smooth"});
+  };
+  $$("[data-step]",sl).forEach(b=>b.addEventListener("click",()=>step(+b.dataset.step)));
+  track.addEventListener("scroll",mark,{passive:true}); mark();
+  track.addEventListener("keydown",e=>{ if(e.key==="ArrowRight"){e.preventDefault();step(1);} if(e.key==="ArrowLeft"){e.preventDefault();step(-1);} });
+  sl.addEventListener("pointerenter",()=>{paused=true;}); sl.addEventListener("pointerleave",()=>{paused=false;});
+  sl.addEventListener("touchstart",()=>{paused=true;},{passive:true}); sl.addEventListener("touchend",()=>setTimeout(()=>{paused=false;},2500));
+  sl.addEventListener("focusin",()=>{paused=true;}); sl.addEventListener("focusout",()=>{paused=false;});
+  new IntersectionObserver(([e])=>{ if(e.isIntersecting&&!visible) track.scrollTo({left:0,behavior:"auto"}); visible=e.isIntersecting; },{threshold:.45}).observe(sl);
+  if(!reduceMotion) setInterval(()=>{ if(visible&&!paused) step(dir); },3200);
+});
 if(matchMedia("(pointer:fine)").matches){
   $$("[data-tilt]").forEach(el=>el.addEventListener("pointermove",e=>{ const r=el.getBoundingClientRect(); el.style.setProperty("--mx",(e.clientX-r.left)+"px"); el.style.setProperty("--my",(e.clientY-r.top)+"px"); }));
 }
