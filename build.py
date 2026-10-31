@@ -275,21 +275,27 @@ def net_slider(kind, reverse):
     visit_key, visit = ("net.visit.ch", "Visit channel") if yt else ("net.visit.pg", "Visit page")
     cards = []
     for c in NETWORK[kind]:
-        banner = f'<img src="assets/channels/{c["slug"]}-banner.jpg" alt="" loading="lazy">' if c["banner"] else ""
+        slug = c["slug"]
+        bg = (f'<img src="assets/channels/{slug}-banner.jpg" alt="" loading="lazy">' if c["banner"]
+              else f'<img class="is-blur" src="assets/channels/{slug}-avatar.jpg" alt="" loading="lazy">')
+        plat = "YouTube" if yt else "Facebook"
         cards.append(f'''
           <div class="slide"><a class="ncard" href="{c["url"]}" target="_blank" rel="noopener noreferrer">
-            <div class="ncard__banner">{banner}<span class="ncard__badge">{glyph}</span></div>
-            <div class="ncard__body">
-              <span class="ncard__avatar"><img src="assets/channels/{c["slug"]}-avatar.jpg" alt="{esc(c["name"])}" loading="lazy" width="80" height="80"></span>
+            <div class="ncard__bg" aria-hidden="true">{bg}</div>
+            <div class="ncard__top"><span class="ncard__plat">{glyph}{plat}</span><span class="ncard__ed"><i></i>Eminent Destino</span></div>
+            <div class="ncard__mid">
+              <span class="ncard__avatar"><img src="assets/channels/{slug}-avatar.jpg" alt="{esc(c["name"])}" loading="lazy" width="88" height="88"></span>
               <h3>{esc(c["name"])}</h3>
               <p class="ncard__handle" dir="ltr">{esc(c["handle"])}</p>
-              <div class="ncard__chips"><span class="chip"><b>{c["followers"]}</b> <span data-i18n="{unit_key}">{unit}</span></span><span class="chip chip--ed">Eminent Destino</span></div>
-              <span class="ncard__go"><span data-i18n="{visit_key}">{visit}</span>{ARROW_UR}</span>
+            </div>
+            <div class="ncard__bot">
+              <div class="ncard__stat"><b>{c["followers"]}</b><span data-i18n="{unit_key}">{unit}</span></div>
+              <span class="ncard__go"><span data-i18n="{visit_key}">{visit}</span><i>{ARROW_UR}</i></span>
             </div>
           </a></div>''')
     more_key, more = ("net.more.ch", "&amp; Many Other Channels") if yt else ("net.more.pg", "&amp; Many Other Pages")
     cards.append(f'''
-          <div class="slide"><div class="ncard ncard--more"><i class="ring" aria-hidden="true"></i><span class="ncard__big">{glyph}</span><b class="plus">+</b><h3 data-i18n="{more_key}">{more}</h3></div></div>''')
+          <div class="slide"><div class="ncard ncard--more"><span class="plus" aria-hidden="true">+</span><h3 data-i18n="{more_key}">{more}</h3></div></div>''')
     a = ("net.yt.a", "YouTube Channels") if yt else ("net.fb.a", "Facebook Pages")
     return f'''
       <div class="slider" data-slider data-dir="{-1 if reverse else 1}" data-reveal>
