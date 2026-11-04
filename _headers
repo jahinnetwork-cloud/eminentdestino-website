@@ -5,3 +5,6 @@
 
 /assets/*
   Cache-Control: public, max-age=86400
+
+/singapore-data-protection*
+  X-Robots-Tag: noindex, nofollow, noarchive

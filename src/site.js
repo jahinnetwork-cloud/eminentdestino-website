@@ -77,6 +77,7 @@ const MY = {
 "ft.line":"Eminent နှင့် Destino တို့၏ ဖက်စပ်လုပ်ငန်း။ စင်ကာပူ၏ဒစ်ဂျစ်တယ်ဖန်တီးသူများအတွက် ဖန်တီးထားသည်။",
 "ft.services":"ဝန်ဆောင်မှုများ","ft.offices":"ရုံးများ","ft.contact":"ဆက်သွယ်ရန်","ft.eminent.h":"Eminent",
 "ft.eminent":"အမေရိကန် (ဌာနချုပ်)၊ ယူအေအီး၊ ဘင်္ဂလားဒေ့ရှ်","ft.destino":"စင်ကာပူ","ft.edo":"စင်ကာပူ (ဌာနချုပ်)","soon":"လင့်ခ်ကို မကြာမီ ထည့်သွင်းမည်","ft.top":"အပေါ်သို့ ပြန်သွားရန်",
+"ft.dp":"စင်ကာပူ ဒေတာကာကွယ်ရေး","dp.meta":"စင်ကာပူ ဒေတာကာကွယ်ရေး","dp.eyebrow":"ပုဂ္ဂိုလ်ရေးလုံခြုံမှု စင်တာ","dp.kicker":"ဒေတာကာကွယ်ရေးနှင့် ပုဂ္ဂိုလ်ရေးလုံခြုံမှု","dp.h1":"သင့်ပုဂ္ဂိုလ်ရေးလုံခြုံမှုက အရေးကြီးပါသည်။","dp.lead":"စင်ကာပူ၏ Personal Data Protection Act (PDPA) နှင့်အညီ ကိုယ်ရေးအချက်အလက်များကို ကာကွယ်ရန်နှင့် ပုဂ္ဂိုလ်ရေးလုံခြုံမှုဆိုင်ရာ မေးမြန်းချက်များကို ဖြေကြားရန် ကျွန်ုပ်တို့ ကတိပြုပါသည်။","dp.h2":"ကျွန်ုပ်တို့၏ ဒေတာကာကွယ်ရေးအရာရှိ","dp.p":"ကိုယ်ရေးအချက်အလက် ကိုင်တွယ်မှုနှင့် ပတ်သက်သော မေးခွန်းများ၊ တောင်းဆိုမှုများ သို့မဟုတ် စိုးရိမ်ပူပန်မှုများအတွက် ကျွန်ုပ်တို့၏ သတ်မှတ်ထားသော ဒေတာကာကွယ်ရေးအရာရှိကို ဆက်သွယ်ပါ။","dp.cta":"DPO ထံ အီးမေးလ်ပို့ရန်","dp.badge":"ဒေတာကာကွယ်ရေး တရားဝင် ဆက်သွယ်ရန်","dp.company":"ကုမ္ပဏီ","dp.uen":"မှတ်ပုံတင်အမှတ် (UEN)","dp.dpo":"ဒေတာကာကွယ်ရေးအရာရှိ (DPO)","dp.contact":"ဒေတာကာကွယ်ရေး ဆက်သွယ်ရန်","dp.help":"ကျွန်ုပ်တို့ ကူညီနိုင်ပုံ","dp.h1a":"ကိုယ်ရေးအချက်အလက် ကြည့်ရှုခွင့်နှင့် ပြင်ဆင်ခွင့် တောင်းဆိုမှုများ","dp.h2a":"ပုဂ္ဂိုလ်ရေးလုံခြုံမှုနှင့် ဒေတာကာကွယ်ရေး မေးမြန်းချက်များ","dp.h3a":"ကိုယ်ရေးအချက်အလက်ဆိုင်ရာ တိုင်ကြားမှုများနှင့် စိုးရိမ်ပူပန်မှုများ","dp.foot":"EMINENT DESTINO PTE. LTD. · စင်ကာပူ",
 "net.eyebrow":"ကျွန်ုပ်တို့၏ ကွန်ရက်","net.yt.a":"YouTube ချန်နယ်များ","net.fb.a":"Facebook စာမျက်နှာများ","net.we":"ကျွန်ုပ်တို့ စီမံခန့်ခွဲသော","net.subs":"subscribers","net.followers":"followers","net.visit.ch":"ချန်နယ်သို့ သွားရန်","net.visit.pg":"စာမျက်နှာသို့ သွားရန်","net.more.ch":"& အခြား ချန်နယ်များစွာ","net.more.pg":"& အခြား စာမျက်နှာများစွာ","net.prev":"ယခင်","net.next":"နောက်",
 "crumb.home":"ပင်မစာမျက်နှာ","crumb.services":"ဝန်ဆောင်မှုများ",
 "sp.for":"မည်သူများအတွက်လဲ","sp.inc":"ပါဝင်သည်များ","sp.how":"အလုပ်လုပ်ပုံ","sp.start":"စတင်ရန်","sp.email":"အီးမေးလ်ပို့ရန်",
@@ -148,8 +149,9 @@ function setLang(l){
   $$("[data-s]").forEach(el=>{ const [id,f]=el.dataset.s.split("|"); const v=sv(id,f); if(v!==undefined) el.textContent=v; });
   $$(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
   syncLinks(l); updateExplorer();
-  if(l==="my") document.title = PAGE==="home" ? t("meta.title") : sv(PAGE,"t")+" — Eminent Destino";
-  else document.title = document.querySelector('meta[property="og:title"]').content;
+  const ogT=document.querySelector('meta[property="og:title"]');
+  if(l==="my") document.title = PAGE==="home" ? t("meta.title") : PAGE==="dp" ? t("dp.meta")+" — Eminent Destino" : sv(PAGE,"t")+" — Eminent Destino";
+  else document.title = ogT ? ogT.content : EN["meta.title"];
   try{ localStorage.setItem("edo-lang",l); }catch(e){}
 }
 $$(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));

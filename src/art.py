@@ -121,3 +121,23 @@ SERVICE_ART = {
   <path class="a1 an-pulse" d="M70 76v28l26-14z"/>
   <path class="a2 an-spark" d="M142 12l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><circle class="a1 an-float" cx="14" cy="44" r="5"/>"""),
 }
+
+
+# ---- data protection page hero: shield with lock, orbiting dots
+SHIELD = _svg("dp-art", "0 0 420 380", """
+  <ellipse cx="210" cy="346" rx="150" ry="16" fill="#000" opacity=".16"/>
+  <g class="an-orbit" style="transform-origin:210px 180px"><circle cx="210" cy="180" r="168" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-dasharray="3 9"/><circle cx="378" cy="180" r="11" fill="#fff"/></g>
+  <g class="an-orbit an-orbit--r" style="transform-origin:210px 180px"><circle cx="210" cy="180" r="132" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="2 8"/><circle cx="78" cy="180" r="8" fill="#FFE1C7"/></g>
+  <circle class="an-ping" cx="210" cy="176" r="118" fill="none" stroke="#fff" stroke-width="3"/>
+  <g class="an-float">
+    <path d="M210 38l112 38v82c0 78-48 124-112 152C146 282 98 236 98 158V76z" fill="#fff"/>
+    <path d="M210 62l90 30v66c0 62-37 99-90 123-53-24-90-61-90-123V92z" fill="#FFE6D1"/>
+    <path d="M210 62l90 30v66c0 62-37 99-90 123z" fill="#FFD1AD"/>
+    <rect x="166" y="160" width="88" height="68" rx="14" fill="#E04E00"/>
+    <path d="M184 160v-20a26 26 0 0 1 52 0v20" fill="none" stroke="#E04E00" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="210" cy="190" r="9" fill="#fff"/><rect x="206" y="193" width="8" height="19" rx="4" fill="#fff"/>
+  </g>
+  <g class="an-float an-d2"><rect x="18" y="206" width="104" height="72" rx="16" fill="#fff"/><rect x="32" y="222" width="46" height="8" rx="4" fill="#FF6B00"/><rect x="32" y="238" width="74" height="6" rx="3" fill="#FFE6D1"/><rect x="32" y="250" width="58" height="6" rx="3" fill="#FFE6D1"/><circle cx="98" cy="226" r="7" fill="#FFB46B"/></g>
+  <g class="an-float an-d1"><circle cx="352" cy="92" r="38" fill="#fff"/><path class="dp-check" d="M334 94l13 13 24-26" fill="none" stroke="#FF6B00" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <path class="an-spark" d="M60 80l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" fill="#fff"/>
+  <path class="an-spark an-d2" d="M372 262l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#FFE1C7"/>""")

@@ -110,7 +110,8 @@ def footer(home):
     </div>
     <div class="ftr__legal">
       <span>© <span id="yr">2026</span> Eminent Destino</span>
-      <a href="{'#top' if home else '#top'}" data-i18n="ft.top">Back to top</a>
+      <a href="{'' if home else '../'}singapore-data-protection.html" data-i18n="ft.dp">Singapore Data Protection</a>
+      <a href="#top" data-i18n="ft.top">Back to top</a>
     </div>
   </div>
 </footer>'''
@@ -316,6 +317,81 @@ def network():
     </div>
   </section>
 '''
+
+# ---------------------------------------------------------------- DATA PROTECTION PAGE (not indexed, linked from footer only)
+DP_EMAIL = "dpo@eminentdestino.com"
+DP_ICONS = [
+ '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 16l1-3 5-5 2 2-5 5z"/>',
+ '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"/><path d="M9.6 9.4a2.4 2.4 0 1 1 3.4 2.2c-.6.3-1 .8-1 1.4M12 16.2v.1"/>',
+ '<path d="M12 3l8 3v6c0 4.6-3.2 7.6-8 9-4.8-1.4-8-4.4-8-9V6z"/><path d="M12 8v5M12 16.2v.1"/>',
+]
+def dp_main():
+    help_items = [("dp.h1a", "Personal data access and correction requests"),
+                  ("dp.h2a", "Privacy and data protection enquiries"),
+                  ("dp.h3a", "Personal data complaints and concerns")]
+    help_html = "".join(f'''
+        <article class="dp-help__i" data-reveal style="--d:{i*0.1:.1f}s">
+          <span class="dp-help__ico">{svg(DP_ICONS[i])}</span><span class="dp-help__n">0{i+1}</span>
+          <h3 data-i18n="{k}">{t}</h3>
+        </article>''' for i, (k, t) in enumerate(help_items))
+    return f'''
+  <section class="dp-hero">
+    <div class="dp-hero__glow" aria-hidden="true"></div>
+    <div class="wrap dp-hero__grid">
+      <div class="dp-hero__txt">
+        <p class="dp-eyebrow" data-in style="--i:0"><i></i><span data-i18n="dp.eyebrow">Privacy Center</span></p>
+        <p class="dp-kicker" data-in style="--i:1" data-i18n="dp.kicker">Data Protection &amp; Privacy</p>
+        <h1 data-in style="--i:2" data-i18n="dp.h1">Your Privacy Matters.</h1>
+        <p class="dp-lead" data-in style="--i:3" data-i18n="dp.lead">We are committed to protecting personal data and addressing privacy-related enquiries in accordance with Singapore's Personal Data Protection Act (PDPA).</p>
+        <div class="dp-badges" data-in style="--i:4"><span>PDPA</span><span>Singapore</span><span>DPO</span></div>
+      </div>
+      <div class="dp-hero__art" data-in style="--i:2">{art.SHIELD}</div>
+    </div>
+  </section>
+
+  <section class="sec dp-dpo">
+    <div class="wrap dp-dpo__grid">
+      <div data-reveal>
+        <h2 data-i18n="dp.h2">Our Data Protection Officer</h2>
+        <p class="lead" data-i18n="dp.p">For questions, requests or concerns regarding the handling of personal data, please contact our designated Data Protection Officer.</p>
+        <a class="btn" href="mailto:{DP_EMAIL}"><span data-i18n="dp.cta">Email our DPO</span>{ARROW}</a>
+      </div>
+      <article class="dp-card" data-reveal style="--d:.12s">
+        <div class="dp-card__top"><span class="dp-card__seal">{svg(DP_ICONS[2])}</span><div><b>PDPA</b><span data-i18n="dp.badge">Official data protection contact</span></div></div>
+        <dl class="dp-rows">
+          <div><dt data-i18n="dp.company">Company</dt><dd>EMINENT DESTINO PTE. LTD.</dd></div>
+          <div><dt data-i18n="dp.uen">Registration (UEN)</dt><dd class="mono">202650759E</dd></div>
+          <div><dt data-i18n="dp.dpo">DPO</dt><dd class="dp-who"><span class="dp-av">RJ</span>Ramjanur Rahman Jahin</dd></div>
+          <div><dt data-i18n="dp.contact">Data protection contact</dt><dd><a href="mailto:{DP_EMAIL}">{DP_EMAIL}</a></dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec sec--tint dp-helpsec">
+    <div class="wrap">
+      <h2 data-reveal data-i18n="dp.help">How We Can Help</h2>
+      <div class="dp-help">{help_html}
+      </div>
+      <p class="dp-foot" data-reveal data-i18n="dp.foot">EMINENT DESTINO PTE. LTD. · Singapore</p>
+    </div>
+  </section>
+'''
+
+def dp_page():
+    html = page("Singapore Data Protection | Eminent Destino", "", "", "dp", True, dp_main())
+    # private page: no description, canonical, social or structured data; ask crawlers not to index it
+    html = re.sub(r'<meta name="description"[^\n]*\n', '', html)
+    html = re.sub(r'<link rel="canonical"[^\n]*\n', '', html)
+    html = re.sub(r'<meta property="og:[^\n]*\n', '', html)
+    html = re.sub(r'<meta name="twitter:[^\n]*\n', '', html)
+    html = re.sub(r'<script type="application/ld\+json">[^\n]*</script>\n', '', html)
+    html = html.replace('<meta name="referrer" content="no-referrer">', '<meta name="robots" content="noindex, nofollow, noarchive">\n<meta name="referrer" content="no-referrer">', 1)
+    # sits at the site root but is not the home page: header/brand links go back to index.html
+    for h in ("#services", "#mcn", "#partners", "#contact"):
+        html = html.replace(f'href="{h}"', f'href="index.html{h}"')
+    html = html.replace('class="logo" href="#top"', 'class="logo" href="index.html"')
+    return html
 
 def marquee():
     items = "".join(f'<div class="marquee__item" data-s="{s["id"]}|t">{esc(s["en"]["t"])}</div>' for s in SERVICES)
@@ -693,6 +769,8 @@ for i, s in enumerate(SERVICES):
     open(f'{OUT}/services/{s["id"]}.html', "w", encoding="utf-8").write(
         page(title, desc, "../", s["id"], False, service_main(i), s))
 
+open(f"{OUT}/singapore-data-protection.html", "w", encoding="utf-8").write(dp_page())
+
 urls = [SITE + "/"] + [SITE + "/services/" + s["id"] + ".html" for s in SERVICES]
 open(f"{OUT}/sitemap.xml", "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{url}</loc></url>\n' for url in urls) + '</urlset>\n')
 open(f"{OUT}/robots.txt", "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
@@ -784,6 +862,9 @@ write_once(f"{OUT}/_headers", """/*
 
 /assets/*
   Cache-Control: public, max-age=86400
+
+/singapore-data-protection*
+  X-Robots-Tag: noindex, nofollow, noarchive
 """)
 
 write_once(f"{OUT}/.gitignore", """.DS_Store
