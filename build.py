@@ -31,6 +31,8 @@ ICONS = {
  "copyright": '<path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M14.8 9.6a3.3 3.3 0 1 0 0 4.8"/>',
  "video-production": '<rect x="3" y="9" width="18" height="11" rx="2"/><path d="M3 9l3-5h4L7 9M10 9l3-5h4l-3 5M17 9l3-5"/>',
 }
+APP_LOGIN = "https://app.eminentdestino.com/login"
+APP_APPLY = "https://app.eminentdestino.com/apply"
 ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 def svg(inner): return f'<svg viewBox="0 0 24 24" aria-hidden="true">{inner}</svg>'
@@ -61,11 +63,16 @@ def header(home):
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="my" aria-pressed="false" lang="my">မြန်မာ</button>
         </div>
+        <a class="hdr__login" href="{APP_LOGIN}"><span data-i18n="nav.login">Login</span></a>
         <a class="btn btn--sm" href="#contact"><span data-i18n="cta.work">Work with EDO</span>{ARROW}</a>
         <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
       </div>
     </div>
     <div class="mmenu" id="mmenu">{nav}
+      <div class="mmenu__cta">
+        <a class="mmenu__login" href="{APP_LOGIN}"><span data-i18n="nav.login">Login</span></a>
+        <a class="mmenu__apply" href="{APP_APPLY}"><span data-i18n="nav.apply">Apply</span>{ARROW}</a>
+      </div>
     </div>
   </div>
 </header>'''
@@ -393,6 +400,35 @@ def dp_page():
     html = html.replace('class="logo" href="#top"', 'class="logo" href="index.html"')
     return html
 
+def access():
+    return f'''
+  <section class="ac" id="access">
+    <div class="ac__glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="ac__head" data-reveal>
+        <p class="ac__eyebrow"><i></i><span data-i18n="ac.eyebrow">Partner access</span></p>
+        <h2 data-i18n="ac.h2">Already with us, or ready to join?</h2>
+      </div>
+      <div class="ac__grid">
+        <a class="ac__card ac__card--login" href="{APP_LOGIN}" data-reveal>
+          <span class="ac__tag" data-i18n="nav.login">Login</span>
+          {art.LOGIN_ART}
+          <h3 data-i18n="nav.login">Login</h3>
+          <p data-i18n="ac.login.p">Already a partner? Sign in to your EDO account.</p>
+          <span class="ac__cta"><span data-i18n="ac.login.cta">Sign in to your account</span><i>{ARROW}</i></span>
+        </a>
+        <a class="ac__card ac__card--apply" href="{APP_APPLY}" data-reveal style="--d:.12s">
+          <span class="ac__tag" data-i18n="nav.apply">Apply</span>
+          {art.APPLY_ART}
+          <h3 data-i18n="nav.apply">Apply</h3>
+          <p data-i18n="ac.apply.p">New to EDO? Send your application and our team will review it.</p>
+          <span class="ac__cta"><span data-i18n="ac.apply.cta">Apply now</span><i>{ARROW}</i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+'''
+
 def marquee():
     items = "".join(f'<div class="marquee__item" data-s="{s["id"]}|t">{esc(s["en"]["t"])}</div>' for s in SERVICES)
     return items + items
@@ -454,6 +490,7 @@ def home_main():
 
   <div class="marquee" aria-hidden="true"><div class="marquee__track">{marquee()}</div></div>
 {network()}
+{access()}
 
   <section class="sec" id="about">
     <div class="wrap">

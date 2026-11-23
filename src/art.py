@@ -141,3 +141,25 @@ SHIELD = _svg("dp-art", "0 0 420 380", """
   <g class="an-float an-d1"><circle cx="352" cy="92" r="38" fill="#fff"/><path class="dp-check" d="M334 94l13 13 24-26" fill="none" stroke="#FF6B00" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
   <path class="an-spark" d="M60 80l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" fill="#fff"/>
   <path class="an-spark an-d2" d="M372 262l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#FFE1C7"/>""")
+
+# ---- login / apply cards
+LOGIN_ART = _svg("ac__art", "0 0 240 190", f"""
+  <ellipse cx="120" cy="172" rx="86" ry="9" fill="#FFD1AD"/>
+  <g class="an-float"><rect x="40" y="18" width="150" height="124" rx="20" fill="{OT}" stroke="#FFB46B" stroke-width="3"/>
+  <circle cx="115" cy="56" r="20" fill="{O}"/><circle cx="115" cy="50" r="7" fill="{W}"/><path d="M101 68c3-8 25-8 28 0" fill="{W}"/>
+  <rect x="62" y="88" width="106" height="14" rx="7" fill="{W}" stroke="#FFB46B" stroke-width="2.5"/><rect x="62" y="110" width="106" height="14" rx="7" fill="{W}" stroke="#FFB46B" stroke-width="2.5"/>
+  <circle cx="74" cy="117" r="2.6" fill="{OD}"/><circle cx="84" cy="117" r="2.6" fill="{OD}"/><circle cx="94" cy="117" r="2.6" fill="{OD}"/><circle cx="104" cy="117" r="2.6" fill="{OD}" class="an-dot"/></g>
+  <g class="an-float an-d2"><circle cx="190" cy="120" r="30" fill="{INK}"/><rect x="176" y="118" width="28" height="22" rx="6" fill="{O}"/><path d="M181 118v-6a9 9 0 0 1 18 0v6" fill="none" stroke="{O}" stroke-width="5" stroke-linecap="round"/><circle cx="190" cy="127" r="3.4" fill="{W}"/></g>
+  <path class="an-spark" d="M30 40l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="{O}"/>
+  <path class="an-spark an-d2" d="M214 40l2.5 6.5 6.5 2.5-6.5 2.5-2.5 6.5-2.5-6.5-6.5-2.5 6.5-2.5z" fill="{OD}"/>""")
+
+APPLY_ART = _svg("ac__art", "0 0 240 190", f"""
+  <ellipse cx="120" cy="172" rx="86" ry="9" fill="#000" opacity=".14"/>
+  <g class="an-float"><rect x="44" y="14" width="140" height="132" rx="20" fill="{W}"/>
+  <rect x="62" y="34" width="60" height="9" rx="4.5" fill="{O}"/>
+  <rect x="62" y="54" width="104" height="12" rx="6" fill="{OS}"/><rect x="62" y="74" width="104" height="12" rx="6" fill="{OS}"/><rect x="62" y="94" width="70" height="12" rx="6" fill="{OS}"/>
+  <rect x="62" y="116" width="52" height="18" rx="9" fill="{O}"/></g>
+  <g class="an-float an-d1"><circle cx="186" cy="52" r="27" fill="#FFC53D"/><path class="dp-check" d="M174 53l8 8 15-17" fill="none" stroke="{INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g class="an-float an-d3"><path d="M214 118 156 142l22 8 8 22 10-18z" fill="{W}"/><path d="M214 118 178 150l-4 16 12-16z" fill="{OS}"/></g>
+  <path class="an-spark" d="M26 52l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="{W}"/>
+  <path class="an-spark an-d2" d="M30 128l2.5 6.5 6.5 2.5-6.5 2.5-2.5 6.5-2.5-6.5-6.5-2.5 6.5-2.5z" fill="#FFE1C7"/>""")

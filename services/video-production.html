@@ -676,6 +676,59 @@ html[lang="my"] .dp-kicker{font-size:1.05rem}
 html[lang="my"] .dp-rows dt{font-size:.9rem}
 html[lang="my"] .dp-foot{font-size:.95rem}
 
+/* header login + mobile menu buttons */
+.hdr__login{display:inline-flex;align-items:center;min-height:44px;padding:.5rem 1.15rem;border-radius:999px;border:1.5px solid var(--orange);color:var(--orange-deep);font-weight:700;font-size:.95rem;transition:background .25s,color .25s}
+.hdr__login:hover{background:var(--orange);color:#fff}
+.mmenu__cta{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;padding:.6rem .4rem .3rem;margin-top:.4rem;border-top:1px solid var(--line)}
+.mmenu .mmenu__cta a{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1rem;border-radius:999px;font-size:1rem;font-weight:700}
+.mmenu .mmenu__login{border:1.5px solid var(--orange);color:var(--orange-deep)}
+.mmenu .mmenu__apply{background:var(--orange);color:#fff}
+.mmenu .mmenu__apply:hover{background:var(--orange-deep)}
+.mmenu__apply svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* login / apply access cards */
+.ac{position:relative;isolation:isolate;overflow:hidden;padding-block:var(--space);background:var(--ink);color:#fff}
+.ac__glow{position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 10% 0%,rgba(255,107,0,.35),transparent 70%),radial-gradient(50% 50% at 100% 100%,rgba(255,138,43,.28),transparent 70%)}
+.ac__head{max-width:760px}
+.ac__eyebrow{display:inline-flex;align-items:center;gap:.6rem;font:600 .8rem var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:#FFB46B}
+.ac__eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:edPing 2s infinite}
+.ac h2{margin-top:1rem;font-size:clamp(2rem,5vw,4rem);text-wrap:balance}
+.ac__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.4vw,1.6rem);margin-top:clamp(2rem,5vw,3.4rem)}
+.ac__card{position:relative;display:flex;flex-direction:column;overflow:hidden;min-height:430px;padding:clamp(1.5rem,3vw,2.4rem);border-radius:36px;transition:transform .45s var(--ease),box-shadow .45s}
+.ac__card:hover{transform:translateY(-8px)}
+.ac__card--login{background:#fff;color:var(--ink);box-shadow:0 40px 70px -40px rgba(0,0,0,.8)}
+.ac__card--apply{background:linear-gradient(135deg,#FF8A2B,#E04E00 60%,#B93A00);color:#fff;box-shadow:0 40px 70px -36px rgba(255,107,0,.75)}
+.ac__card--login::after,.ac__card--apply::after{content:"";position:absolute;z-index:0;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;pointer-events:none}
+.ac__card--login::after{background:radial-gradient(circle,var(--orange-soft),transparent 70%)}
+.ac__card--apply::after{background:radial-gradient(circle,rgba(255,255,255,.28),transparent 70%)}
+.ac__card>*{position:relative;z-index:1}
+.ac__tag{align-self:flex-start;padding:.35rem .9rem;border-radius:999px;font:700 .72rem var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.ac__card--login .ac__tag{background:var(--orange-tint);color:var(--orange-deep);border:1px solid var(--orange-soft)}
+.ac__card--apply .ac__tag{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4)}
+.ac__art{position:absolute !important;z-index:0 !important;right:clamp(.6rem,2vw,1.6rem);top:clamp(.8rem,2vw,1.4rem);width:clamp(150px,42%,250px);height:auto;pointer-events:none;transition:transform .5s var(--ease)}
+.ac__art *{transform-box:fill-box;transform-origin:center}
+.ac__card:hover .ac__art{transform:translateY(-6px) scale(1.05)}
+.ac h3{margin-top:auto;padding-top:9rem;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1;letter-spacing:-.04em}
+.ac__card p{margin-top:.8rem;max-width:34ch;font-size:clamp(1rem,1.4vw,1.15rem)}
+.ac__card--login p{color:var(--muted)}
+.ac__card--apply p{color:rgba(255,255,255,.94)}
+.ac__cta{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.6rem;padding:.4rem .4rem .4rem 1.5rem;border-radius:999px;font-weight:700;transition:background .3s,color .3s}
+.ac__card--login .ac__cta{background:var(--ink);color:#fff}
+.ac__card--apply .ac__cta{background:#fff;color:var(--orange-deep)}
+.ac__cta i{display:grid;place-items:center;flex:none;width:48px;height:48px;border-radius:50%;background:var(--orange);transition:transform .4s var(--ease)}
+.ac__card--apply .ac__cta i{background:var(--ink)}
+.ac__cta svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ac__card:hover .ac__cta i{transform:translateX(4px)}
+.ac__card--login:hover .ac__cta{background:var(--orange)}
+html[lang="my"] .ac__eyebrow,html[lang="my"] .ac__tag{font-family:var(--f-body);letter-spacing:0;text-transform:none;font-size:.95rem}
+html[lang="my"] .ac h2{line-height:1.3}
+html[lang="my"] .ac h3{line-height:1.25}
+@media (max-width:860px){.ac__grid{grid-template-columns:1fr}.ac__card{min-height:380px}.ac h3{padding-top:7.5rem}}
+@media (max-width:420px){.ac__card{border-radius:28px;min-height:360px}.ac__art{width:46%}.ac h3{padding-top:6.5rem}.ac__cta{padding-left:1.1rem;font-size:.92rem}}
+@media (prefers-reduced-motion:reduce){.ac__eyebrow i{animation:none}}
+@media (max-width:399px){.hdr__login{display:none}}
+@media (max-width:520px){.hdr__login{padding:.45rem .95rem;font-size:.9rem}}
+
 ol{margin:0;padding:0;list-style:none}
 .sp-hero::after{background:var(--orange-tint)}
 .sec--tint .forbox{background:#fff}
@@ -705,6 +758,7 @@ ol{margin:0;padding:0;list-style:none}
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="my" aria-pressed="false" lang="my">မြန်မာ</button>
         </div>
+        <a class="hdr__login" href="https://app.eminentdestino.com/login"><span data-i18n="nav.login">Login</span></a>
         <a class="btn btn--sm" href="#contact"><span data-i18n="cta.work">Work with EDO</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
       </div>
@@ -714,6 +768,10 @@ ol{margin:0;padding:0;list-style:none}
         <a href="../index.html#mcn" data-i18n="nav.mcn">YouTube MCN</a>
         <a href="../index.html#partners" data-i18n="nav.partners">Partners &amp; API</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <div class="mmenu__cta">
+        <a class="mmenu__login" href="https://app.eminentdestino.com/login"><span data-i18n="nav.login">Login</span></a>
+        <a class="mmenu__apply" href="https://app.eminentdestino.com/apply"><span data-i18n="nav.apply">Apply</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
     </div>
   </div>
 </header>
@@ -979,6 +1037,7 @@ const MY = {
 "ft.services":"ဝန်ဆောင်မှုများ","ft.offices":"ရုံးများ","ft.contact":"ဆက်သွယ်ရန်","ft.eminent.h":"Eminent",
 "ft.eminent":"အမေရိကန် (ဌာနချုပ်)၊ ယူအေအီး၊ ဘင်္ဂလားဒေ့ရှ်","ft.destino":"စင်ကာပူ","ft.edo":"စင်ကာပူ (ဌာနချုပ်)","soon":"လင့်ခ်ကို မကြာမီ ထည့်သွင်းမည်","ft.top":"အပေါ်သို့ ပြန်သွားရန်",
 "ft.dp":"စင်ကာပူ ဒေတာကာကွယ်ရေး","dp.meta":"စင်ကာပူ ဒေတာကာကွယ်ရေး","dp.eyebrow":"ပုဂ္ဂိုလ်ရေးလုံခြုံမှု စင်တာ","dp.kicker":"ဒေတာကာကွယ်ရေးနှင့် ပုဂ္ဂိုလ်ရေးလုံခြုံမှု","dp.h1":"သင့်ပုဂ္ဂိုလ်ရေးလုံခြုံမှုက အရေးကြီးပါသည်။","dp.lead":"စင်ကာပူ၏ Personal Data Protection Act (PDPA) နှင့်အညီ ကိုယ်ရေးအချက်အလက်များကို ကာကွယ်ရန်နှင့် ပုဂ္ဂိုလ်ရေးလုံခြုံမှုဆိုင်ရာ မေးမြန်းချက်များကို ဖြေကြားရန် ကျွန်ုပ်တို့ ကတိပြုပါသည်။","dp.h2":"ကျွန်ုပ်တို့၏ ဒေတာကာကွယ်ရေးအရာရှိ","dp.p":"ကိုယ်ရေးအချက်အလက် ကိုင်တွယ်မှုနှင့် ပတ်သက်သော မေးခွန်းများ၊ တောင်းဆိုမှုများ သို့မဟုတ် စိုးရိမ်ပူပန်မှုများအတွက် ကျွန်ုပ်တို့၏ သတ်မှတ်ထားသော ဒေတာကာကွယ်ရေးအရာရှိကို ဆက်သွယ်ပါ။","dp.cta":"DPO ထံ အီးမေးလ်ပို့ရန်","dp.badge":"ဒေတာကာကွယ်ရေး တရားဝင် ဆက်သွယ်ရန်","dp.company":"ကုမ္ပဏီ","dp.uen":"မှတ်ပုံတင်အမှတ် (UEN)","dp.dpo":"ဒေတာကာကွယ်ရေးအရာရှိ (DPO)","dp.contact":"ဒေတာကာကွယ်ရေး ဆက်သွယ်ရန်","dp.help":"ကျွန်ုပ်တို့ ကူညီနိုင်ပုံ","dp.h1a":"ကိုယ်ရေးအချက်အလက် ကြည့်ရှုခွင့်နှင့် ပြင်ဆင်ခွင့် တောင်းဆိုမှုများ","dp.h2a":"ပုဂ္ဂိုလ်ရေးလုံခြုံမှုနှင့် ဒေတာကာကွယ်ရေး မေးမြန်းချက်များ","dp.h3a":"ကိုယ်ရေးအချက်အလက်ဆိုင်ရာ တိုင်ကြားမှုများနှင့် စိုးရိမ်ပူပန်မှုများ","dp.foot":"EMINENT DESTINO PTE. LTD. · စင်ကာပူ",
+"nav.login":"ဝင်ရောက်ရန်","nav.apply":"လျှောက်ထားရန်","ac.eyebrow":"ပါတနာ ဝင်ပေါက်","ac.h2":"ကျွန်ုပ်တို့နှင့်အတူ ရှိပြီးသားလား၊ ပါဝင်ရန် အဆင်သင့်လား?","ac.login.p":"ပါတနာ ဖြစ်ပြီးသားလား? သင့် EDO အကောင့်သို့ ဝင်ရောက်ပါ။","ac.login.cta":"သင့်အကောင့်သို့ ဝင်ရောက်ရန်","ac.apply.p":"EDO တွင် အသစ်လား? လျှောက်လွှာ ပေးပို့ပါ၊ ကျွန်ုပ်တို့အဖွဲ့ စစ်ဆေးပေးပါမည်။","ac.apply.cta":"ယခု လျှောက်ထားရန်",
 "net.eyebrow":"ကျွန်ုပ်တို့၏ ကွန်ရက်","net.yt.a":"YouTube ချန်နယ်များ","net.fb.a":"Facebook စာမျက်နှာများ","net.we":"ကျွန်ုပ်တို့ စီမံခန့်ခွဲသော","net.subs":"subscribers","net.followers":"followers","net.visit.ch":"ချန်နယ်သို့ သွားရန်","net.visit.pg":"စာမျက်နှာသို့ သွားရန်","net.more.ch":"& အခြား ချန်နယ်များစွာ","net.more.pg":"& အခြား စာမျက်နှာများစွာ","net.prev":"ယခင်","net.next":"နောက်",
 "crumb.home":"ပင်မစာမျက်နှာ","crumb.services":"ဝန်ဆောင်မှုများ",
 "sp.for":"မည်သူများအတွက်လဲ","sp.inc":"ပါဝင်သည်များ","sp.how":"အလုပ်လုပ်ပုံ","sp.start":"စတင်ရန်","sp.email":"အီးမေးလ်ပို့ရန်",
