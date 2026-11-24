@@ -720,6 +720,14 @@ html[lang="my"] .ac h3{line-height:1.25}
 @media (max-width:399px){.hdr__login{display:none}}
 @media (max-width:520px){.hdr__login{padding:.45rem .95rem;font-size:.9rem}}
 
+/* header Apply button stays visible on every screen size */
+@media (max-width:1020px){.hdr__end .hdr__apply{display:inline-flex}}
+@media (max-width:560px){.hdr__login{display:none}.hdr__apply{padding:.45rem .95rem;font-size:.9rem;min-height:40px}.hdr__apply svg{display:none}}
+@media (max-width:359px){.hdr__end .hdr__apply{display:none}}
+.hdr__apply{white-space:nowrap}
+@media (max-width:560px){html[lang="my"] .hdr__apply{padding:.4rem .8rem;font-size:.82rem}html[lang="my"] .lang button{padding:.4rem .6rem}}
+@media (max-width:379px){html[lang="my"] .hdr__end .hdr__apply{display:none}}
+
 ol{margin:0;padding:0;list-style:none}
 .sp-hero::after{background:var(--orange-tint)}
 .sec--tint .forbox{background:#fff}
@@ -750,7 +758,7 @@ ol{margin:0;padding:0;list-style:none}
           <button type="button" data-lang="my" aria-pressed="false" lang="my">မြန်မာ</button>
         </div>
         <a class="hdr__login" href="https://app.eminentdestino.com/login"><span data-i18n="nav.login">Login</span></a>
-        <a class="btn btn--sm" href="index.html#contact"><span data-i18n="cta.work">Work with EDO</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--sm hdr__apply" href="https://app.eminentdestino.com/apply"><span data-i18n="nav.apply">Apply</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
       </div>
     </div>

@@ -703,3 +703,11 @@ html[lang="my"] .ac h3{line-height:1.25}
 @media (prefers-reduced-motion:reduce){.ac__eyebrow i{animation:none}}
 @media (max-width:399px){.hdr__login{display:none}}
 @media (max-width:520px){.hdr__login{padding:.45rem .95rem;font-size:.9rem}}
+
+/* header Apply button stays visible on every screen size */
+@media (max-width:1020px){.hdr__end .hdr__apply{display:inline-flex}}
+@media (max-width:560px){.hdr__login{display:none}.hdr__apply{padding:.45rem .95rem;font-size:.9rem;min-height:40px}.hdr__apply svg{display:none}}
+@media (max-width:359px){.hdr__end .hdr__apply{display:none}}
+.hdr__apply{white-space:nowrap}
+@media (max-width:560px){html[lang="my"] .hdr__apply{padding:.4rem .8rem;font-size:.82rem}html[lang="my"] .lang button{padding:.4rem .6rem}}
+@media (max-width:379px){html[lang="my"] .hdr__end .hdr__apply{display:none}}

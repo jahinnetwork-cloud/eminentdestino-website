@@ -64,7 +64,7 @@ def header(home):
           <button type="button" data-lang="my" aria-pressed="false" lang="my">မြန်မာ</button>
         </div>
         <a class="hdr__login" href="{APP_LOGIN}"><span data-i18n="nav.login">Login</span></a>
-        <a class="btn btn--sm" href="#contact"><span data-i18n="cta.work">Work with EDO</span>{ARROW}</a>
+        <a class="btn btn--sm hdr__apply" href="{APP_APPLY}"><span data-i18n="nav.apply">Apply</span>{ARROW}</a>
         <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
       </div>
     </div>
